@@ -1,0 +1,13 @@
+{% extends 'themes/'~app_theme~'/base.html.twig' %}
+
+{% block title %}Hello HomeController!{% endblock %}
+
+{% block body %}
+
+
+    {% for service in services %}
+     {{ service.name }}
+    {% endfor %}
+{#    {% include 'themes/'~app_theme~'/sections/services.html.twig'  %}#}
+
+{% endblock %}

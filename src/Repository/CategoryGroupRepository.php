@@ -21,6 +21,21 @@ class CategoryGroupRepository extends ServiceEntityRepository
         parent::__construct($registry, CategoryGroup::class);
     }
 
+    /**
+     * @return CategoryGroup[] Returns an array of CategoryGroup objects
+     */
+    public function findAllWithServices(): array
+    {
+        return $this->createQueryBuilder('c')
+            ->leftJoin('c.services', 'services')
+            ->select('c', 'services')
+            ->orderBy('c.name', 'ASC')
+//            ->setMaxResults(10)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
 //    /**
 //     * @return CategoryGroup[] Returns an array of CategoryGroup objects
 //     */
