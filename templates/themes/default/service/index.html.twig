@@ -1,12 +1,12 @@
 {% extends 'themes/'~app_theme~'/base.html.twig' %}
 
-{% block title %}Hello HomeController!{% endblock %}
+{% block title %}Services{% endblock %}
 
 {% block body %}
 
-
+    {{ component("H1", {label: "Services proposés"}) }}
     {% for service in services %}
-     {{ service.name }}
+        {% include 'themes/'~app_theme~'/sections/single-service.html.twig' with {'service': service} %}
     {% endfor %}
 {#    {% include 'themes/'~app_theme~'/sections/services.html.twig'  %}#}
 
