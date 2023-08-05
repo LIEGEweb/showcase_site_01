@@ -14,8 +14,18 @@ class HomeController extends AbstractController
     #[Route('/', name: 'app_home')]
     public function index(EntityManagerInterface $entityManager): Response
     {
+        $servicesByCategoryGroup = $entityManager->getRepository(CategoryGroup::class)->findAllWithServices();
+
+        foreach ($servicesByCategoryGroup as $category){
+           foreach ($category->getServices() as $service){
+               $s[] = $service->getImage();
+           }
+       }
+        shuffle($s);
+
         return $this->render('themes/' . $this->getParameter('app.theme') . '/home/index.html.twig', [
-            'servicesByCategoryGroup' => $entityManager->getRepository(CategoryGroup::class)->findAllWithServices(),
+            'servicesByCategoryGroup' =>  $servicesByCategoryGroup,
+            "servicesImages" => $s
         ]);
     }
 }
