@@ -1,0 +1,19 @@
+{#{% if hrefLink  is defined and hrefLink is not empty %} ouiiiiii hrefLink ouiiiii {% endif %}#}
+
+<a {% if route is defined and route is not empty %}
+    {% if fragment %}
+        href="{{path(route, {'_fragment': fragment}) }}"
+    {% else %}
+        href="{{path(route)}}"
+        {% endif %}
+{% elseif hrefLink  is defined and  hrefLink is not empty %} href="{{hrefLink}}"
+{% else %} href="#" {% endif %}
+        id="{{ id }}"
+        class="pointer text-secondary dark:text-darkSecondary hover:text-secondary/90 hover:dark:text-darkSecondary/90
+{% if underline %} underline {% endif %}
+{% if uppercase %} uppercase {% endif %}
+{% if capitalize %} capitalize {% endif %}
+
+">
+    {{ label }}
+</a>
