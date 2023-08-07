@@ -1,17 +1,17 @@
-<h4 class="text-lg font-bold mb-5">Contact</h4>
-<ul class="text-primary dark:text-primary-dark space-y-2">
+<h4 class="text-lg  text-black dark:text-darkBlack font-bold mb-5">Contact</h4>
+<ul class="text-pr dark:text-primary-dark space-y-2">
     <li class="font-semibold">{{ contactInfos.name }}</li>
     <li class="relative pl-12 before:bg-icon-map-pin before:bg-no-repeat before:content-[''] before:inline-block before:top-0 before:absolute before:left-0 before:translate-y-1.5 before:w-4 before:h-4">
         {{ contactInfos.streetName }} {{ contactInfos.streetNr }}
         <br/>{{ contactInfos.postalCode }}&nbsp;&nbsp;{{ contactInfos.postalCity }}
     </li>
     <li class="relative pl-12 before:bg-icon-phone before:bg-no-repeat before:content-[''] before:inline-block before:top-1/2 before:absolute before:left-0 before:-translate-y-1/4 before:w-4 before:h-4">
-        <a href="tel:{{ contactInfos.phone }}">{{ contactInfos.phone }}</a>
+        {{ component('Link', {label: contactInfos.phone, hrefLink: 'tel:'~contactInfos.phone }) }}
     </li>
     <li class="relative pl-12 before:bg-icon-envelope before:bg-no-repeat before:content-[''] before:inline-block before:top-1/2 before:absolute before:left-0 before:-translate-y-1/4 before:w-4 before:h-4">
-        <a href="mailto:{{ contactInfos.email }}">{{ contactInfos.email }}</a>
+        {{ component('Link', {label: contactInfos.email, hrefLink: 'mailto:'~contactInfos.email }) }}
     </li>
     <li class="relative pl-12 before:content-['TVA'] before:font-bold before:inline-block before:top-1/2 before:absolute before:left-0 before:-translate-y-2.5 before:w-4 before:h-4">
-       {{ contactInfos.vat }}
+        {{ contactInfos.vat }}
     </li>
 </ul>
