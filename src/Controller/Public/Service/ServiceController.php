@@ -14,8 +14,10 @@ class ServiceController extends AbstractController
     #[Route('/services', name: 'app_services')]
     public function index(ServiceRepository $serviceRepository): Response
     {
+        $services = $serviceRepository->findAll();
+
         return $this->render('themes/' . $this->getParameter('app.theme') . '/service/index.html.twig', [
-            'services' => $serviceRepository->findAll(),
+            'services' => $services,
         ]);
     }
 }
