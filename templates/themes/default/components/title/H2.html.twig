@@ -1,0 +1,9 @@
+<h2 class="font-h2 text-3xl font-extrabold text-black/90 dark:text-darkWhite/90" id="{{ id }}">
+    {% if capitalize %}
+        {{ label | capitalize }}
+    {% elseif uppercase %}
+        {{ label | upper }}
+    {% else %}
+        {{ label }}
+    {% endif %}
+</h2>
