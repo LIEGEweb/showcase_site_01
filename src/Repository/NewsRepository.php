@@ -36,8 +36,7 @@ class NewsRepository extends ServiceEntityRepository
             ->getResult()
         ;
     }
-
-
+    
     /**
      * @return \Doctrine\ORM\Query
      * @throws \Psr\Container\ContainerExceptionInterface
