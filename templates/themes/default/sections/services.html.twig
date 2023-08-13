@@ -10,7 +10,6 @@
                    <ul class="ml-3 mb-3">
                        {% for service in category.services %}
                            <li class="relative pl-4 before:bg-icon-minus-small before:bg-no-repeat before:content-[''] before:inline-block before:top-1/2 before:absolute before:left-0 before:-translate-y-1/4 before:w-4 before:h-4">
-                               {{ service.name }}
                                {{ component('Link', {label: service.name, route: 'app_services', fragment: service.id }) }}
                            </li>
                        {% endfor %}
