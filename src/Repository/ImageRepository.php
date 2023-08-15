@@ -21,7 +21,17 @@ class ImageRepository extends ServiceEntityRepository
         parent::__construct($registry, Image::class);
     }
 
-
+    /**
+     * @return Image|null
+     */
+    public function findRandomOne(): ?array
+    {
+        $images = $this->createQueryBuilder('i')
+            ->getQuery()
+            ->getArrayResult();
+        shuffle($images);
+        return $images[0];
+    }
 //    /**
 //     * @return PhotosImages[] Returns an array of PhotosImages objects
 //     */
