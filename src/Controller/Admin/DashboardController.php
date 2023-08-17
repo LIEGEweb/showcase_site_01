@@ -4,6 +4,9 @@ namespace App\Controller\Admin;
 
 use App\Controller\Admin\Company\CompanyCrudController;
 use App\Entity\CategoryGroup;
+use App\Entity\News;
+use App\Entity\Album;
+use App\Entity\Image;
 use App\Entity\Service;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
@@ -40,13 +43,17 @@ class DashboardController extends AbstractDashboardController
 
     public function configureMenuItems(): iterable
     {
-
         return [
-            MenuItem::linkToDashboard('Dashboard', 'fa fa-home'),
-            MenuItem::subMenu('Services', 'fa fa-tags')->setSubItems([
+            MenuItem::linkToDashboard('Dashboard', 'fa-solid fa-home'),
+            MenuItem::subMenu('Services', 'fa-solid fa-tags')->setSubItems([
                 MenuItem::linkToCrud('Categories', null, CategoryGroup::class),
                 MenuItem::linkToCrud('Services', null, Service::class),
-            ])
+            ]),
+            MenuItem::linkToCrud('News', 'fa-solid fa-newspaper', News::class),
+            MenuItem::subMenu('Albums photos', 'fa-solid fa-tags')->setSubItems([
+                MenuItem::linkToCrud('Albums', 'fa-solid fa-images', Album::class),
+                MenuItem::linkToCrud('Photos', 'fa-regular fa-image', Image::class),
+            ]),
         ];
         // yield MenuItem::linkToCrud('The Label', 'fas fa-list', EntityClass::class);
     }
