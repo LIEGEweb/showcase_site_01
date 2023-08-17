@@ -23,7 +23,40 @@ class AlbumRepository extends ServiceEntityRepository
         parent::__construct($registry, Album::class);
     }
 
+    /**
+     * @return Album[] Returns an array of PhotosAlbum objects
+     */
+    public function findAllWithFirstImage(): array
+    {
+        $subQueryBuilder = $this->_em->createQueryBuilder()
+            ->select('MIN(i2.id)')
+            ->from(Image::class, 'i2')
+            ->where('i2.album = a.id')
+            ->andWhere('i2.published = :published')
 
+        ;
+
+        return $this->createQueryBuilder('a')
+            ->andWhere('a.published = :published')
+            ->setParameter('published', true)
+            ->leftJoin('a.images', 'i')
+            ->addSelect('i')
+            ->andWhere('i.id = (' . $subQueryBuilder->getDQL() . ')')
+            ->setParameter('published', true)
+            ->getQuery()
+            ->getResult();
+    }
+
+    public function findOneBySlug($slug){
+        return $this->createQueryBuilder('a')
+            ->andWhere('a.published = :published')
+            ->andWhere('a.slug = :slug')
+            ->setParameters(['published'=> true, 'slug' => $slug])
+            ->leftJoin('a.images', 'i')
+            ->select('a, i')
+            ->getQuery()
+            ->getOneOrNullResult();
+    }
 //    /**
 //     * @return PhotosAlbum[] Returns an array of PhotosAlbum objects
 //     */
