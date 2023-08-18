@@ -1,0 +1,16 @@
+<article>
+    <figure>
+        <img src="/images/albums/{{ fileName }}" alt="{{ alt }}">
+    </figure>
+
+    {{ component('Link', {
+        label: name,
+        route: 'app_album_show',
+        slug: slug,
+        class: 'my-3'
+    }) }}
+
+    <p>
+        {{ description|raw }}
+    </p>
+</article>
