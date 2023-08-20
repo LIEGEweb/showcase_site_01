@@ -1,0 +1,17 @@
+{% extends 'themes/'~app_theme~'/base.html.twig' %}
+
+{% block title %} {{ app_album_section }} {% endblock %}
+
+{% block body %}
+    <figure style="background-image: url('/images/albums/{{ image.fileName }}')"
+            class="relative w-full aspect-video bg-cover bg-center bg-center bg-no-repeat">
+        <div class="absolute flex flex-col justify-center items-start  bg-white/90 rounded-md w-96 aspect-video px-12 py-6 top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2">
+            {{ component("H1", { label: app_album_section, class: "m-0 text-black dark:text-darkWhite" }) }}
+{#            {{ component('H2', {label: app_album_section, capitalize: true }) }}#}
+            {{ component('H3', {label: 'Découvrez', uppercase: true }) }}
+        </div>
+    </figure>
+    <div class="w-full p-12 m-12">
+        {% include 'themes/'~app_theme~'/sections/album/albums-grid.html.twig' %}
+    </div>
+{% endblock %}
