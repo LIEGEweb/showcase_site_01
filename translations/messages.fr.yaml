@@ -1,0 +1,12 @@
+Name: Nom
+Street:
+    Name: Rue
+    Nr: N°
+Postal Code: Code Postal
+Postal City: Localité
+Phone: Téléphone
+Email: Email
+Vat: N° TVA
+
+# Services
+CategoryGroup: Groupe
