@@ -1,0 +1,44 @@
+{% extends 'themes/'~app_theme~'/base.html.twig' %}
+
+{% block title %} {{ app_album_section }} {% endblock %}
+
+{% block body %}
+    <div class="w-full relative" {{ stimulus_controller('gallery') }}>
+        <div class="absolute -z-30 top-0 left-0 block w-full aspect-video transition-all ease-in duration-300 pt-6 pv-6  pl-16 pr-16 opacity-0 bg-white dark:bg-darkWhite">
+             <button class="bg-secondary text-white text-sm px-6 py-2 mb-1 rounded-md"
+                     {{ stimulus_action('gallery', 'close', 'click') }}>
+                 Fermer
+             </button>
+            <img src="/images/transparent_pixel.webp" alt="" class="w-full aspect-video"
+                    {{ stimulus_target('gallery', 'big') }}>
+            <div class="text-secondary dark:text-darkBlack font-bold py-2 my-1"
+                    {{ stimulus_target('gallery', 'alt') }}>
+
+            </div>
+        </div>
+        <div class="absolute -z-10 top-0 left-0 w-full h-1/2 block bg-gradient-to-b from-black/20 to-white dark:from-darkBlack/20 dark:to-dark-white">
+
+        </div>
+        <section class="w-full md:w-3/4 min-h-screen m-auto ">
+            {{ component('H1', {
+                label: album.name
+            }) }}
+            <p class="p-12 text-lg"> {{ album.description | raw }} </p>
+
+            <div class="grid grid-cols1 md:grid-cols-3 gap-5 p-12">
+                {% for image in album.images %}
+                    <figure>
+                        <img src="/images/albums/{{ image.fileName }}"
+                             alt="{{ image.alt }}"
+                             class="rounded-md shadow-sm md:hover:cursor-pointer"
+                                {{ stimulus_action('gallery', 'zoom', 'click') }}
+                        >
+                    </figure>
+                {% endfor %}
+            </div>
+
+        </section>
+        <button {{ stimulus_action('gallery', 'zoom', 'click') }}>click</button>
+    </div>
+    <div>
+{% endblock %}
