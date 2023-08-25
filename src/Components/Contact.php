@@ -12,6 +12,6 @@ class Contact
     public Object $contactInfos;
     public function __construct(CompanyRepository $companyRepository)
     {
-        $this->contactInfos = $companyRepository->findAll()[0];
+        $this->contactInfos = !empty($companyRepository->findAll()) ? $companyRepository->findAll()[0] : [];
     }
 }
