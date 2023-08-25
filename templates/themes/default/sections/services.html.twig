@@ -3,8 +3,9 @@
    {% block id %} services{% endblock %}
    {% block title %} Services {% endblock %}
    {% block content %}
-       <div class="w-full flex flex-col-reverse md:flex-row">
-           <article class="my-6 w-full md:w-1/2 flex flex-col justify-center h-[50vh]">
+       <div class="w-full flex flex-col-reverse md:flex-row ">
+           {% if servicesByCategoryGroup is not empty %}
+           <article class="md:w-1/2">
                {% for category in servicesByCategoryGroup %}
                    <h3 class="font-semibold">{{ category.name }}</h3>
                    <ul class="ml-3 mb-3">
@@ -20,9 +21,12 @@
                    'route': 'app_services'
                }) }}
            </article>
-           <div class="w-full  md:w-1/2 relative">
-               <img src="images/services/{{ servicesImages.0 }}" alt="services"
-                    class="w-full aspect-video justify-self-center absolute top-1/2 -translate-y-1/2"  />
-           </div>
+           {% endif %}
+           {% if servicesImages is not empty %}
+               <figure class="w-full  md:w-1/2 aspect-video">
+                   <img src="images/services/{{ servicesImages.0 }}" alt="services"
+                        class="w-full aspect-video justify-self-center"/>
+               </figure>
+           {% endif %}
        </div>
    {% endblock %}
