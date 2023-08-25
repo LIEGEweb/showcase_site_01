@@ -21,6 +21,7 @@ class HomeController extends AbstractController
     {
         $servicesByCategoryGroup = $categoryGroupRepository->findAllWithServices();
 
+        $s = [];
         if (!empty($servicesByCategoryGroup)) {
             foreach ($servicesByCategoryGroup as $category) {
                 foreach ($category->getServices() as $service) {
