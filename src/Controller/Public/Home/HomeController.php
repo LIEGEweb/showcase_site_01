@@ -25,7 +25,7 @@ class HomeController extends AbstractController
         if (!empty($servicesByCategoryGroup)) {
             foreach ($servicesByCategoryGroup as $category) {
                 foreach ($category->getServices() as $service) {
-                    $s[] = $service->getImage();
+                    if(!empty($service->getImage())) $s[] = $service->getImage();
                 }
             }
             shuffle($s);
