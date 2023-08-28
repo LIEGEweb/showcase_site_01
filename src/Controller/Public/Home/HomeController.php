@@ -5,6 +5,7 @@ namespace App\Controller\Public\Home;
 use App\Entity\CategoryGroup;
 use App\Entity\News;
 use App\Repository\CategoryGroupRepository;
+use App\Repository\ImageRepository;
 use App\Repository\NewsRepository;
 use App\Repository\AlbumRepository;
 use Doctrine\ORM\EntityManagerInterface;
@@ -17,7 +18,7 @@ class HomeController extends AbstractController
     #[Route('/', name: 'app_home')]
     public function index(CategoryGroupRepository $categoryGroupRepository,
                           NewsRepository          $newsRepository,
-                          AlbumRepository         $albumRepository): Response
+                          ImageRepository         $imageRepository): Response
     {
         $servicesByCategoryGroup = $categoryGroupRepository->findAllWithServices();
 
@@ -25,7 +26,7 @@ class HomeController extends AbstractController
         if (!empty($servicesByCategoryGroup)) {
             foreach ($servicesByCategoryGroup as $category) {
                 foreach ($category->getServices() as $service) {
-                    if(!empty($service->getImage())) $s[] = $service->getImage();
+                    if (!empty($service->getImage())) $s[] = $service->getImage();
                 }
             }
             shuffle($s);
@@ -36,7 +37,7 @@ class HomeController extends AbstractController
             'servicesByCategoryGroup' => $servicesByCategoryGroup,
             "servicesImages" => $s,
             "news" => $news,
-            'albums' => $albumRepository->findAllWithFirstImage()
+            'images_from_albums' => $imageRepository->findRandomMultiple()
         ]);
     }
 }
