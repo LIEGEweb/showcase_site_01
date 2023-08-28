@@ -4,14 +4,15 @@
    {% block title %} {{ app_album_section}} {% endblock %}
    {% block content %}
        <div class="w-full grid grid-cols-1 md:grid-cols-3 gap-5">
-           {% for album in albums %}
+           {% for image in images_from_albums %}
 
                {{ component('AlbumCard', {
-                   id: album.id,
-                   name: album.name,
-                   description: album.description,
-                   fileName: album.images[0].fileName,
-                   alt: album.images[0].alt,
+                   id: image.album.id,
+                   name: image.album.name,
+                   slug: image.album.slug,
+                   description: image.album.description,
+                   fileName: image.fileName,
+                   alt: image.alt,
                }) }}
 
            {% endfor %}
