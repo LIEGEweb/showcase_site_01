@@ -32,6 +32,17 @@ class ImageRepository extends ServiceEntityRepository
         shuffle($images);
         return $images[0];
     }
+
+    public function findRandomMultiple($limit = 6): ?array
+    {
+        $images_all = $this->createQueryBuilder('i')
+            ->leftJoin('i.album', 'album')
+            ->select('i, album')
+            ->getQuery()
+            ->getArrayResult();
+        shuffle($images_all);
+        return array_slice($images_all, 0, $limit);
+    }
 //    /**
 //     * @return PhotosImages[] Returns an array of PhotosImages objects
 //     */
