@@ -3,7 +3,7 @@
    {% block id %} {{ app_album_section}} {% endblock %}
    {% block title %} {{ app_album_section}} {% endblock %}
    {% block content %}
-       <div class="w-full grid grid-cols-1 md:grid-cols-3 gap-5">
+       <div class="w-full grid grid-cols-2 md:grid-cols-3 gap-5">
            {% for image in images_from_albums %}
 
                {{ component('AlbumCard', {
