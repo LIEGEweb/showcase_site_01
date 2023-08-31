@@ -1,0 +1,15 @@
+{% extends 'themes/'~app_theme~'/layouts/home-section.html.twig' %}
+
+   {% block id %} Reseaux sociaux {% endblock %}
+   {% block title %} Reseaux sociaux {% endblock %}
+   {% block content %}
+       <div class="w-full mx-auto my-16 grid grid-cols-2 md:grid-cols-4 gap-6">
+           {% for social_item in app_socials.get %}
+
+               {{ component('SocialHomeCard', {
+                   name: social_item.name,
+                   url: social_item.url
+               }) }}
+           {% endfor %}
+       </div>
+   {% endblock %}
