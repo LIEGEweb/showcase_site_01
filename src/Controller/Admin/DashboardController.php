@@ -8,6 +8,7 @@ use App\Entity\News;
 use App\Entity\Album;
 use App\Entity\Image;
 use App\Entity\Service;
+use App\Entity\SocialNetwork;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractDashboardController;
@@ -54,6 +55,7 @@ class DashboardController extends AbstractDashboardController
                 MenuItem::linkToCrud('Albums', 'fa-solid fa-images', Album::class),
                 MenuItem::linkToCrud('Photos', 'fa-regular fa-image', Image::class),
             ]),
+            MenuItem::linkToCrud('Reseaux Sociaux', 'fa-solid fa-newspaper', SocialNetwork::class),
         ];
         // yield MenuItem::linkToCrud('The Label', 'fas fa-list', EntityClass::class);
     }
