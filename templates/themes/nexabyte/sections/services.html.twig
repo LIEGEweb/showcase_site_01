@@ -1,0 +1,28 @@
+{% extends 'themes/'~app_theme~'/layouts/section.html.twig' %}
+
+   {% block id %} services{% endblock %}
+   {% block title %} Services {% endblock %}
+   {% block content %}
+       <div class="w-full flex flex-col-reverse md:flex-row ">
+           <article class="md:w-1/2">
+               {% for category in servicesByCategoryGroup %}
+                   <h3 class="font-semibold">{{ category.name }}</h3>
+                   <ul class="ml-3 mb-3">
+                       {% for service in category.services %}
+                           <li class="relative pl-4 before:bg-icon-minus-small before:bg-no-repeat before:content-[''] before:inline-block before:top-1/2 before:absolute before:left-0 before:-translate-y-1/4 before:w-4 before:h-4">
+                               {{ component('Link', {label: service.name, route: 'app_services', fragment: service.id }) }}
+                           </li>
+                       {% endfor %}
+                   </ul>
+               {% endfor %}
+               {{ component("Button", {
+                   'label': 'Découvrez les services',
+                   'route': 'app_services'
+               }) }}
+           </article>
+           <figure class="w-full  md:w-1/2 aspect-video">
+               <img src="images/services/{{ servicesImages.0 }}" alt="services"
+                    class="w-full aspect-video justify-self-center"  />
+           </figure>
+       </div>
+   {% endblock %}
