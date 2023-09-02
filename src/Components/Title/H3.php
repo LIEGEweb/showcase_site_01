@@ -8,8 +8,6 @@ use Symfony\UX\TwigComponent\Attribute\AsTwigComponent;
 class H3
 {
     public function __construct(public ?string $label = "",
-                                public ?bool $capitalize = false,
-                                public ?bool $uppercase = false,
                                 public ?string $id = ""
     )
     {
