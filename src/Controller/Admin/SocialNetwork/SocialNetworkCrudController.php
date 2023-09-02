@@ -21,7 +21,7 @@ class SocialNetworkCrudController extends AbstractCrudController
             ChoiceField::new('name')->setChoices([
                 'Facebook'=>'Facebook',
                 'Instagram'=>'Instagram',
-                'Tiktok'=>'TikTok',
+                'TikTok'=>'TikTok',
                 'Twitter'=>'Twitter',
                 'LinkedIn'=>'LinkedIn',
                 'Autre' => 'Autre'
