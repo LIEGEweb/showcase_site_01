@@ -1,0 +1,34 @@
+<footer class="bg-secondary/10 dark:bg-secondary/30 text-black/50 dark:text-darkBlack/50 text-md flex flex-col relative">
+    <svg class="absolute top-0 left-0 w-full text-white dark:text-darkWhite"
+         viewBox="0 0 1440 85" fill="currentColor"
+         xmlns="http://www.w3.org/2000/svg">
+        <path d="M378.203 5.525C477.254 3.4 603.917 5.865 709.104 10.03C812.538 14.195 1019.85 30.005 1149.58 40.375C1481.79 67.745 1735.56 78.2 1993.7 82.62C2097.14 84.405 2207.15 85.595 2446.88 80.495C2686.62 75.395 2912.34 58.735 2912.34 58.735V0H-1470.9V25.755C-1470.9 25.755 -1155.34 53.465 -776.665 51.68C-604.859 51.085 -369.941 45.985 -189.37 32.64C-96.4543 25.755 39.4126 17.17 159.94 12.07C279.152 6.715 333.06 6.375 378.203 5.525Z"/>
+    </svg>
+    <div class="pt-16 px-16 my-16 ">
+        <div class="w-full grid grid-cols-4 gap-6">
+            <article class="col-span-2">
+                {{ component('Contact') }}
+            </article>
+            <article class="">
+                {{ component('Services') }}
+            </article>
+            <article class="hidden md:block ">
+                <h4 class="text-base font-semibold mb-5">Liens </h4>
+                <ul class="pl-3">
+                    <li class="">Accueil</li>
+                    <li class="">Service</li>
+                    <li class="">Actualités</li>
+                    <li class="">Contact</li>
+                </ul>
+            </article>
+        </div>
+    </div>
+    <div class="px-16 py-3 w-full border-t border-black/50  dark:border-darkBlack/50 ">
+        &copy 2023,  {{ component('Link', {
+            label: 'pixelservices.be',
+            hrefLink: 'https://pixelservices.be',
+            class: '!text-black/50 dark:!text-darkBlack/50 hover:!text-[#000000] dark:hover:!text-[#ffffff]'
+        }) }}
+        | Artisan du web | Liège.
+    </div>
+</footer>

@@ -14,7 +14,8 @@
         {{ encore_entry_script_tags('app') }}
     {% endblock %}
 </head>
-<body class="bg-white dark:bg-darkWhite text-black dark:text-darkBlack/50 p-1 font-poppins-regular relative">
+<body class="bg-white dark:bg-darkWhite text-black dark:text-darkBlack/50 p-1 font-poppins-regular relative {% block body_class %} {% endblock %} ">
+{% block body_background %} {% endblock %}
 {{ component('Header', {
     routes: {
         'app_home': 'Accueil',
@@ -27,6 +28,7 @@
     {% block body %}{% endblock %}
 
     {% include 'themes/'~app_theme~'/_parts/_footer.html.twig' %}
+
 </main>
 </body>
 </html>
