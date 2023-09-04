@@ -1,0 +1,13 @@
+{% extends 'themes/'~app_theme~'/layouts/page-layout.html.twig' %}
+
+{% block title %} {{ app_album_section }} {% endblock %}
+{% block page_title %}
+    {{ component("H1", {label: app_album_section}) }}
+{% endblock %}
+
+{% block body %}
+
+    <div class="w-full p-12 m-12">
+        {% include 'themes/'~app_theme~'/sections/album/albums-grid.html.twig' %}
+    </div>
+{% endblock %}

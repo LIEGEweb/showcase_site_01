@@ -1,0 +1,13 @@
+<article class="bg-[#ffffff] dark:bg-[#000000] p-3 rounded-md  border border-black/10 text-center">
+    <figure>
+        <img src="/images/albums/{{ fileName }}" alt="{{ alt }}">
+    </figure>
+
+    {{ component('Link', {
+        label: name,
+        route: 'app_album_show',
+        slug: slug,
+        class: 'y-6 leading-loose text-xl font-semibold'
+    }) }}
+
+</article>
