@@ -1,0 +1,23 @@
+{% extends 'themes/'~app_theme~'/layouts/page-layout.html.twig' %}
+
+        {% block page_title %}
+            {{ component("H1", {label: "Les Actus"}) }}
+        {% endblock %}
+
+{% block title %}Les actus{% endblock %}
+
+{% block body %}
+    <div {{ stimulus_controller('collection') }}>
+        <div class="lg:hidden" {{ stimulus_target('collection', 'mobile') }}>
+            {% include 'themes/'~app_theme~'/sections/news/news-page.html.twig' with {
+                'items': news
+            } %}
+        </div>
+        <div class="hidden lg:block"  {{ stimulus_target('collection', 'desktop') }}>
+            {% include 'themes/'~app_theme~'/sections/news/news-page-md.html.twig' with {
+                'items': news
+            } %}
+        </div>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,7 @@
+{% extends 'themes/'~app_theme~'/layouts/sections-collection.html.twig' %}
+
+{% block item %}
+
+    {{ component('News', {news: item}) }}
+{#{{ component('Card', {label: item.title, description: item.content, folder: 'news', image: item.image}) }}#}
+{% endblock %}

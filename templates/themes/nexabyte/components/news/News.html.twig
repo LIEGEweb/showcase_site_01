@@ -1,0 +1,22 @@
+<article class="w-full  bg-[#FFFFFF] dark:bg-[#000000] border border-black/5 dark:border-darkBlack/5 p-6 hover:scale-110 transition-all ">
+    {{ component("H4", {
+        "label": news.title,
+    }) }}
+    <em class="text-black/30 text-sm">publié le {{ news.createdAt | date('d/m/y') }}</em>
+    <div class="flex flex-col items-start mt-12">
+        <div class="w-full text-justify">
+            {% if news.image is not empty %}
+                <img {{ attributes.defaults({ class:'w-full h-auto mx-auto  rounded-lg shadow-md mb-8'}) }}
+                        src="/images/news/{{ news.image }}"
+                        alt="{{ news.title }}"
+                />
+            {% else %}
+                <div class="w-full aspect-video bg-gradient-to-b from-black to-secondary "></div>
+{#                <div class="w-full aspect-video bg-gradient-to-r from-secondary/60 to-secondary/80 "></div>#}
+            {% endif %}
+            <div class="leading-loose pt-6 text-base text-black/80 dark:text-darkBlack/80">
+                {{ news.content | raw }}
+            </div>
+        </div>
+    </div>
+</article>
