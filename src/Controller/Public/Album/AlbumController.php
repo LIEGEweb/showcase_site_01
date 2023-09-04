@@ -16,7 +16,7 @@ class AlbumController extends AbstractController
     {
     }
 
-    #[Route('/albums', name: 'app_album_index')]
+    #[Route('/albums', name: 'app_albums_index')]
     public function index(ImageRepository $imageRepository): Response
     {
         return $this->render('themes/' . $this->getParameter('app.theme') . '/album/index.html.twig', [
