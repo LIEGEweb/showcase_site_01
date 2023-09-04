@@ -1,0 +1,18 @@
+{# {% if hrefLink  is defined and hrefLink is not empty %} ouiiiiii hrefLink ouiiiii {% endif %} #}
+
+<a {% if route is defined and route is not empty %}
+    {% if slug %}
+        href="{{ path(route, {'slug': slug}) }}"
+    {% elseif fragment %}
+        href="{{ path(route, {'_fragment': fragment}) }}"
+    {% else %}
+        href="{{ path(route) }}"
+    {% endif %}
+{% elseif hrefLink  is defined and  hrefLink is not empty %} href="{{ hrefLink }}"
+{% else %} href="#" {% endif %}
+        id="{{ id }}"
+        {{ attributes.defaults({
+            class: "pointer inline-block underline text-secondary dark:text-darkSecondary hover:text-secondary/90 hover:dark:text-darkSecondary/90"
+        }) }}>
+    {{ label }}
+</a>
