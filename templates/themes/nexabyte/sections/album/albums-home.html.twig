@@ -1,0 +1,54 @@
+{% extends 'themes/'~app_theme~'/layouts/home-section.html.twig' %}
+
+   {% block id %} {{ app_album_section }} {% endblock %}
+   {% block title %} {{ app_album_section }} {% endblock %}
+ {% block class %} relative {% endblock %}
+        {#            background #}
+       {% block background %}
+           <svg class="absolute top-8 left-0 text-secondary/10 dark:text-secondary/30 h-full -z-10 opacity-50"
+                viewBox="0 0 450 797"
+                fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+               <path d="M449.5 448C460 714.5 257.884 790 135.001 790C86.4987 786 80 787.5 54.9987 787.5C-231.501 847.5 -73.9997 600.997 -73.9997 381.003C-75.2218 94.3933 -75.4999 43.0063 133.5 5.00253C342.501 -33.0012 449.5 196.71 449.5 448Z" />
+           </svg>
+       {% endblock %}
+       {#        background #}
+{% block content %}
+    <div class="w-full relative">
+        <article class="w-2/3 mx-auto text-center">
+           <span class="font-poppins-medium text-2xl font-medium leading-5 pb-3">
+               Explorez ces instantanés capturés, témoins de mes activités et des moments précieux de ma vie quotidienne
+           </span>
+            <p class="font-poppins-regular text-base leading-5 py-3"></p>
+
+        </article>
+
+        <div class="w-full grid md:grid-cols-3 gap-5 my-16">
+
+            {% for image in images_from_albums %}
+                {{ component('ImageHomeCard', {
+                    id: image.album.id,
+                    album_name: image.album.name,
+                    album_slug: image.album.slug,
+                    fileName: image.fileName,
+                    alt: image.alt,
+                    loop_index: loop.index
+                }) }}
+
+                {#                <div class="w-full flex flex-col {% if loop.index == 2 %}justify-start{% else %}justify-end{% endif %}">
+                   <figure class="w-full py-3 {% if loop.index is even %}aspect-square{% else %}aspect-74{% endif %} hover:bg-cover bg-no-repeat bg-center"
+                        style="background-image: url({{ asset('images/albums/'~image.fileName) }}"></figure>
+                   <aside class="h-32 flex flex-col justify-center items-start p-6">
+                       {{ component('H4', {
+                           label: image.alt
+                       }) }}
+                       {{ component('Link', {
+                           label: image.album.name,
+                           class: "before:content-['Album:_'] before:text-black dark:before:text-darkBlack before:no-underline"
+                       }) }}
+                   </aside>
+               </div> #}
+
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}
