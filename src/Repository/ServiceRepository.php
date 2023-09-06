@@ -21,6 +21,13 @@ class ServiceRepository extends ServiceEntityRepository
         parent::__construct($registry, Service::class);
     }
 
+    public function paginateServices(){
+        return $this->createQueryBuilder('s')
+            ->leftJoin('s.category', 'category')
+            ->select('s', 'category')
+            ->getQuery();
+    }
+
 //    public function findOneBySomeField($value): ?Service
 //    {
 //        return $this->createQueryBuilder('s')
