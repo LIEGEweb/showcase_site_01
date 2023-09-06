@@ -1,0 +1,17 @@
+<div class="w-full flex flex-col {% if loop_index == 2 %}justify-start{% else %}justify-end{% endif %}">
+    <figure class="w-full py-3 {% if loop_index is even %}aspect-square{% else %}aspect-74{% endif %} hover:bg-cover bg-no-repeat bg-center"
+            style="background-image: url({{ asset('images/albums/'~fileName) }}"></figure>
+    <aside class="h-32 flex flex-col justify-center items-start p-6">
+        {{ component('H4', {
+            label: alt
+        }) }}
+        <span class="inline-block">
+            Album:
+                {{ component('Link', {
+                    label: album_name,
+                    route: 'app_album_show',
+                    slug: album_slug,
+                }) }}
+        </span>
+    </aside>
+</div>
