@@ -1,0 +1,29 @@
+{% extends 'themes/'~app_theme~'/layouts/single-services-container.html.twig' %}
+
+{% block content %}
+
+    <div class="grid md:grid-cols-2 gap-16">
+        <div class="flex flex-col gap-16">
+            {% for item in items  %}
+                {% if loop.index is odd %}
+                    {% block item %}
+                    {% endblock %}
+                {% endif %}
+
+            {% endfor %}
+        </div>
+        <div class="flex flex-col gap-16">
+            {% for item in items  %}
+                {% if loop.index is even %}
+                    {% block item_right %}
+                    {% endblock %}
+                {% endif %}
+
+            {% endfor %}
+        </div>
+    </div>
+    <div class="navigation">
+        {{ knp_pagination_render(items) }}
+    </div>
+
+{% endblock %}
