@@ -1,0 +1,23 @@
+{% extends 'themes/'~app_theme~'/layouts/page-layout.html.twig' %}
+
+        {% block page_title %}
+            {{ component("H1", {label: "Services proposés"}) }}
+        {% endblock %}
+
+{% block title %}Les actus{% endblock %}
+
+{% block body %}
+    <div {{ stimulus_controller('collection') }}>
+        <div class="lg:hidden" {{ stimulus_target('collection', 'mobile') }}>
+            {% include 'themes/'~app_theme~'/sections/service/services-page.html.twig' with {
+                'items': services
+            } %}
+        </div>
+        <div class="hidden lg:block"  {{ stimulus_target('collection', 'desktop') }}>
+            {% include 'themes/'~app_theme~'/sections/service/services-page-lg.html.twig' with {
+                'items': services
+            } %}
+        </div>
+    </div>
+
+{% endblock %}
