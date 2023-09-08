@@ -1,0 +1,9 @@
+{% extends 'themes/'~app_theme~'/layouts/sections-collection-md.html.twig' %}
+
+{% block item %}
+       {{ component('ServiceCard', {label: item.name , content: item.description, image: item.image, alt: item.name, subtitle: item.category.name}) }}
+{% endblock %}
+{% block item_right %}
+
+    {{ component('ServiceCard', {label: item.name , content: item.description, image: item.image, alt: item.name, subtitle: item.category.name}) }}
+{% endblock %}

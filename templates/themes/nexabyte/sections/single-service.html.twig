@@ -1,0 +1,18 @@
+{% extends 'themes/'~app_theme~'/layouts/single-services-container.html.twig' %}
+{% block content %}
+    <figure class="relative">
+        <div class="absolute flex flex-col justify-center items-start  bg-white/90 rounded-md w-96 aspect-video px-12 py-6 top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2">
+            {{ component('H2', {label: service.name, capitalize: true, id: service.id }) }}
+            {{ component('H3', {label: service.category.name, uppercase: true }) }}
+        </div>
+        <img src="images/services/{{ service.image }}" alt="{{ service.name }}"
+        class="w-full aspect-video"/>
+    </figure>
+    <article class="pt-3 pb-3 pr-3 md:pt-12 md:pb-12  md:pr-44">
+       {# <h2 class="font-h2 text-3xl font-extrabold mt-3"> {{ service.name | capitalize }} </h2>
+        <h3 class="font-h2 text-xl font-bold uppercase opacity-60 -mt-1.5 mb-12">{{ service.category.name }}</h3>#}
+        <div class="child:text-base md:child:text-lg child:font-semibold child:leading-relaxed md:child:leading-loose">
+            {{ service.description | raw }}
+        </div>
+    </article>
+{% endblock %}
