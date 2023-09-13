@@ -4,11 +4,14 @@ namespace App\Controller\Admin;
 
 use App\Controller\Admin\Company\CompanyCrudController;
 use App\Entity\CategoryGroup;
+use App\Entity\Message;
 use App\Entity\News;
 use App\Entity\Album;
 use App\Entity\Image;
 use App\Entity\Service;
+use App\Entity\Setup;
 use App\Entity\SocialNetwork;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractDashboardController;
@@ -56,6 +59,8 @@ class DashboardController extends AbstractDashboardController
                 MenuItem::linkToCrud('Photos', 'fa-regular fa-image', Image::class),
             ]),
             MenuItem::linkToCrud('Reseaux Sociaux', 'fa-solid fa-newspaper', SocialNetwork::class),
+            MenuItem::linkToCrud('Messages', 'fa-solid fa-envelope', Message::class),
+            MenuItem::linkToCrud('Configuration', 'fa-solid fa-cog', Setup::class)->setAction('edit')->setEntityId(1),
         ];
         // yield MenuItem::linkToCrud('The Label', 'fas fa-list', EntityClass::class);
     }
