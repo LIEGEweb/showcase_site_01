@@ -10,16 +10,16 @@
 
 {% block body %}
     <div class="w-full relative" {{ stimulus_controller('gallery') }}>
-        <div class="absolute -z-30 top-0 left-0 block w-full aspect-video transition-all ease-in duration-300 pt-6 pv-6  pl-16 pr-16 opacity-0 bg-white dark:bg-darkWhite">
-            <button class="bg-[#ffffff] dark:bg-[#000000] border border-black/10 dark:border-black/10 text-white text-sm mb-1 rounded-md absolute top-12 right-20 z-10"
+        <div class="absolute -z-30 top-0 left-1/4 block w-full aspect-video transition-all ease-in duration-300 pt-6 pv-6  pl-16 pr-16 opacity-0 bg-white dark:bg-darkWhite">
+            <button class="bg-secondary  border border-black/10 dark:border-black/10 text-white text-sm mb-1 rounded-md absolute top-12 right-20 z-10"
                     {{ stimulus_action('gallery', 'close', 'click') }}>
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
-                     class=" text-black/70 w-6 h-6">
+                     class=" text-white dark:text-darkWhite w-6 h-6">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
                 </svg>
 
             </button>
-            <img src="/images/transparent_pixel.webp" alt="" class="w-full aspect-video relative"
+            <img src="/images/transparent_pixel.webp" alt="" class="w-10/12 m-auto relative"
                     {{ stimulus_target('gallery', 'big') }}>
             <div class="text-secondary dark:text-darkBlack font-bold py-2 my-1"
                     {{ stimulus_target('gallery', 'alt') }}>
