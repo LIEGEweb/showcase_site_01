@@ -1,0 +1,13 @@
+<div class="w-full grid grid-cols-2 md:grid-cols-3 gap-16 py-16">
+    {% for album in albums %}
+
+        {{ component('AlbumCard', {
+            id: album.id,
+            name: album.name,
+            slug: album.slug,
+            fileName: album.images[0].fileName,
+            alt: album.images[0].alt,
+        }) }}
+
+    {% endfor %}
+</div>
