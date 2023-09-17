@@ -1,0 +1,40 @@
+{% extends 'themes/'~app_theme~'/layouts/home-section.html.twig' %}
+
+   {% block class %}mt-0 !py-6 !px-0 -z-10 {% endblock %}
+   {% block id %} hero {% endblock %}
+   {% block title_container %}{% endblock %}
+
+   {% block content %}
+       <div class="w-full p-0 flex relative bg-gradient-to-b from-secondary/30 to-white dark:from-secondary/30 dark:to-darkWhite md:from-transparent to-transparent">
+{#       <div class="w-full p-0 flex relative bg-gradient-to-b from-white/0 via-white/30 to-white">#}
+           <div class="absolute top-1/2 left-0 py-6 -translate-y-1/2  px-6 md:bg-gradient-to-r md:from-white md:to-white/5 dark:md:from-darkBlack/10 md:dark:via-darkWhite md:dark:to-darkWhite/5 md:rounded-md">
+               {{ component ('H1', {
+                   label: setup.headline,
+                   class: "!mx-0 "
+               }) }}
+               {{ component ('H2', {
+                   label: setup.sub_headline,
+                   class: "text-left !text-2xl"
+               }) }}
+               <div class="flex justify-start items-end">
+                   {{ component ('Button', {
+                       label: 'Action',
+                       class: "!mb-0 mr-6"
+                   }) }}
+
+                   {{ component ('Link', {
+                       label: 'Autre action'
+                   }) }}
+
+               </div>
+
+               {#            <h2 class="font-poppins-semibold text-secondary text-sm leading-5  font-semibold text-center py-3"> #}
+               {#                {{ setup.sub_headline }} #}
+               {#            </h2> #}
+           </div>
+
+           <div class="-z-20 w-full md:w-1/2 md:translate-x-full block  aspect-74 bg-no-repeat bg-center bg-cover {% if setup.cta_image is empty %} bg-gradient-to-r from-black/20 to-black/10 {% endif %}"
+                   {% if setup.cta_image is not empty %} style="background-image: url('/images/home/{{ setup.cta_image }}')"{% endif %} >
+           </div>
+       </div>
+   {% endblock %}

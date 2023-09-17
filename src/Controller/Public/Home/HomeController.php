@@ -8,6 +8,7 @@ use App\Repository\CategoryGroupRepository;
 use App\Repository\ImageRepository;
 use App\Repository\NewsRepository;
 use App\Repository\AlbumRepository;
+use App\Repository\SetupRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -18,7 +19,8 @@ class HomeController extends AbstractController
     #[Route('/', name: 'app_home')]
     public function index(CategoryGroupRepository $categoryGroupRepository,
                           NewsRepository          $newsRepository,
-                          ImageRepository         $imageRepository): Response
+                          ImageRepository         $imageRepository,
+                          SetupRepository $setupRepository): Response
     {
         $servicesByCategoryGroup = $categoryGroupRepository->findAllWithServices();
 
@@ -34,6 +36,7 @@ class HomeController extends AbstractController
         $news = $newsRepository->findFrontNews();
 
         return $this->render('themes/' . $this->getParameter('app.theme') . '/home/index.html.twig', [
+            'setup' => $setupRepository->homeSetup(),
             'servicesByCategoryGroup' => $servicesByCategoryGroup,
             "servicesImages" => $s,
             "news" => $news,
