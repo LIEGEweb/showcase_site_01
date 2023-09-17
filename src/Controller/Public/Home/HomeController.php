@@ -36,7 +36,7 @@ class HomeController extends AbstractController
         $news = $newsRepository->findFrontNews();
 
         return $this->render('themes/' . $this->getParameter('app.theme') . '/home/index.html.twig', [
-            'setup' => $setupRepository->homeSetup(),
+            'setup' => $setupRepository->homeSetup() ? $setupRepository->homeSetup() : null,
             'servicesByCategoryGroup' => $servicesByCategoryGroup,
             "servicesImages" => $s,
             "news" => $news,

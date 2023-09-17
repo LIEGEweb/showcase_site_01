@@ -31,7 +31,7 @@ class SetupRepository extends ServiceEntityRepository
             ->addSelect('s.homeCtaImage AS cta_image')
             ->addSelect('s.homeCtaImageAlt AS cta_image_alt')
             ->getQuery()
-            ->getResult()[0];
+            ->getOneOrNullResult();
     }
 
 //    /**
