@@ -14,16 +14,16 @@ class Setup
     private ?int $id = null;
 
     #[ORM\Column(length: 255, nullable: true)]
-    private ?string $homeHeadline = null;
+    private ?string $homeHeadline = "";
 
     #[ORM\Column(length: 255, nullable: true)]
-    private ?string $homeSubHeadline = null;
+    private ?string $homeSubHeadline = "";
 
     #[ORM\Column(length: 15, nullable: true)]
-    private ?string $homeCtaButton = null;
+    private ?string $homeCtaButton = "cta";
 
     #[ORM\Column(length: 15, nullable: true)]
-    private ?string $homeSecondaryButton = null;
+    private ?string $homeSecondaryButton = "secondary";
 
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $homeCtaImage = null;
