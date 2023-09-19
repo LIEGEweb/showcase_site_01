@@ -1,6 +1,9 @@
-<div class="my-6">
-    <a href="{% if route is not empty %} {{ path(route) }} {% else %} # {% endif %}"
-       class="bg-secondary text-white px-6 py-2 rounded-sm">
+{#<div class="my-6">#}
+    <a {{ attributes.defaults({
+        class: "bg-secondary text-white my-6 px-6 py-2 rounded-sm"
+    }) }}
+            href="{% if route is not empty %} {{ path(route) }} {% else %} # {% endif %}"
+    >
         {{ label }}
     </a>
-</div>
+{#</div>#}
