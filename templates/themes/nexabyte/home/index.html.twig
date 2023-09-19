@@ -4,7 +4,9 @@
 
 {% block body %}
 
-    {% include 'themes/'~app_theme~'/sections/home/hero.html.twig' %}
+    {% if setup is not empty %}
+        {% include 'themes/'~app_theme~'/sections/home/hero.html.twig' %}
+    {% endif %}
     {% include 'themes/'~app_theme~'/sections/service/services.html.twig' %}
     {% include 'themes/'~app_theme~'/sections/news/news-home.html.twig' %}
     {% include 'themes/'~app_theme~'/sections/album/albums-home.html.twig' %}

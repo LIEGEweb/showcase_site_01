@@ -4,6 +4,7 @@ namespace App\Controller\Public\Home;
 
 use App\Entity\CategoryGroup;
 use App\Entity\News;
+use App\Entity\Setup;
 use App\Repository\CategoryGroupRepository;
 use App\Repository\ImageRepository;
 use App\Repository\NewsRepository;
@@ -22,6 +23,7 @@ class HomeController extends AbstractController
                           ImageRepository         $imageRepository,
                           SetupRepository $setupRepository): Response
     {
+        $setup = $setupRepository->homeSetup();
         $servicesByCategoryGroup = $categoryGroupRepository->findAllWithServices();
 
         $s = [];
@@ -36,7 +38,8 @@ class HomeController extends AbstractController
         $news = $newsRepository->findFrontNews();
 
         return $this->render('themes/' . $this->getParameter('app.theme') . '/home/index.html.twig', [
-            'setup' => $setupRepository->homeSetup() ? $setupRepository->homeSetup() : null,
+            'setup' => $setup,
+//            'setup' => $setupRepository->homeSetup() ? $setupRepository->homeSetup() : null,
             'servicesByCategoryGroup' => $servicesByCategoryGroup,
             "servicesImages" => $s,
             "news" => $news,
