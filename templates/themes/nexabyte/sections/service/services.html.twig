@@ -1,7 +1,6 @@
 {% extends 'themes/'~app_theme~'/layouts/home-section.html.twig' %}
 
    {% block id %} services{% endblock %}
-   {% block title %} Services {% endblock %}
    {% block class %} relative {% endblock %}
            {#            background #}
            {% block background %}
@@ -14,20 +13,21 @@
            {#        background #}
    {% block content %}
        <div class="w-full relative">
-           <article class="w-full md:w-5/6 mx-auto p-3 md:px-6 text-center">
-               <span class="font-poppins-medium text-xl md:text-2xl font-semibold leading-5 pb-3">Je mets à disposition mes services, n'hésitez pas à me contacter.</span>
-               <p class="font-poppins-regular text-base leading-5 py-3">"Fort d'une vaste gamme de compétences et
-                   d'expertises, je vous offre
-                   mes services avec enthousiasme. Que ce soit pour répondre à vos besoins professionnels ou personnels,
-                   je suis là pour vous accompagner.</p>
 
-           </article>
+           {{ component('HomeSectionHeader', {
+               title: "Services",
+               header: "Je mets à disposition mes services, n'hésitez pas à me contacter.",
+               description: "Fort d'une vaste gamme de compétences et
+                   d'expertises, je vous propose mes services avec enthousiasme. Que ce soit pour répondre à vos besoins professionnels ou personnels,
+                   je suis là pour vous accompagner."
+           }) }}
+
 
            {% if servicesByCategoryGroup is not empty %}
                <article class="w-full md:w-3/4 mx-auto my-16">
                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-24">
                        {% for category in servicesByCategoryGroup %}
-                           <div class="bg-[#FFFFFF] dark:bg-[#000000] border border-black/5 dark:border-darkBlack/5 p-6">
+                           <div class="w-1/2 md:w-full m-auto bg-[#FFFFFF] dark:bg-[#000000] border border-black/5 dark:border-darkBlack/5 p-6">
                                {{ component("H4", {
                                    "label": category.name,
                                    "class": "pt-14 before:absolute before:-top-1.5 before:left-0 before:bg-secondary/40 before:bg-icon-nurse-white before:bg-[length:50%_50%] before:bg-no-repeat before:bg-center before:content-[''] before:w-12 before:h-12 before:rounded-full"
