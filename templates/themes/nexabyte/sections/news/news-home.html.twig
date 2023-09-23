@@ -1,13 +1,13 @@
 {% extends 'themes/'~app_theme~'/layouts/home-section.html.twig' %}
 
    {% block id %} News {% endblock %}
-   {% block title %} News {% endblock %}
    {% block content %}
-       {{ component('H3', {
-           label: "Restez informé avec nos actualités récentes dans la section News.",
-           class: "text-center"
+       {{ component('HomeSectionHeader', {
+           title: "News",
+           header: "Restez informé avec nos actualités récentes dans la section News.",
+           description: ""
        }) }}
-
+      
        <div class="w-full md:w-2/3 mx-auto my-16 grid grid-cols-1 md:grid-cols-2 gap-5">
            {% for item in news %}
                {{ component('News', {news: item}) }}
