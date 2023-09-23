@@ -1,7 +1,6 @@
 {% extends 'themes/'~app_theme~'/layouts/home-section.html.twig' %}
 
    {% block id %} {{ app_album_section }} {% endblock %}
-   {% block title %} {{ app_album_section }} {% endblock %}
  {% block class %} relative {% endblock %}
         {#            background #}
        {% block background %}
@@ -14,13 +13,11 @@
        {#        background #}
 {% block content %}
     <div class="w-full relative">
-        <article class="w-2/3 mx-auto text-center">
-           <span class="font-poppins-medium text-2xl font-medium leading-5 pb-3">
-               Explorez ces instantanés capturés, témoins de mes activités et des moments précieux de ma vie quotidienne
-           </span>
-            <p class="font-poppins-regular text-base leading-5 py-3"></p>
-
-        </article>
+        {{ component('HomeSectionHeader', {
+            title: app_album_section,
+            header: "Instantanés capturés",
+            description: "Témoins de mes activités et des moments précieux de ma vie quotidienne"
+        }) }}
 
         <div class="w-full grid md:grid-cols-3 gap-5 my-16">
 
@@ -34,21 +31,11 @@
                     loop_index: loop.index
                 }) }}
 
-                {#                <div class="w-full flex flex-col {% if loop.index == 2 %}justify-start{% else %}justify-end{% endif %}">
-                   <figure class="w-full py-3 {% if loop.index is even %}aspect-square{% else %}aspect-74{% endif %} hover:bg-cover bg-no-repeat bg-center"
-                        style="background-image: url({{ asset('images/albums/'~image.fileName) }}"></figure>
-                   <aside class="h-32 flex flex-col justify-center items-start p-6">
-                       {{ component('H4', {
-                           label: image.alt
-                       }) }}
-                       {{ component('Link', {
-                           label: image.album.name,
-                           class: "before:content-['Album:_'] before:text-black dark:before:text-darkBlack before:no-underline"
-                       }) }}
-                   </aside>
-               </div> #}
-
             {% endfor %}
         </div>
+        {{ component("Button", {
+            'label': app_album_section,
+            'route': 'app_albums_index'
+        }) }}
     </div>
 {% endblock %}
