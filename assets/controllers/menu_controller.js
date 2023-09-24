@@ -13,12 +13,11 @@ export default class extends Controller {
     static targets = ["nav", "mobile", "desktop"]
 
     connect() {
-        if (window.screen.width > 1024) {
+        if (window.screen.width > 1023) {
             let element = this.mobileTarget
             element.remove()
         } else {
             let element = this.desktopTarget
-            console.log(element)
             element.remove()
         }
     }
