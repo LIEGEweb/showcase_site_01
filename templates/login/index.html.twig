@@ -4,21 +4,30 @@
 {# ... #}
 
 {% block body %}
-    {% if error %}
-        <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-    {% endif %}
+    <div class="w-full md:w-96 min-h-96 mx-auto my-16 p-16 bg-black/5 dark:bg-darkBlack/5 rounded-md">
+        {{ component ('H1', {label: 'Connexion'}) }}
+        {% if error %}
+            <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+        {% endif %}
 
-    <form action="{{ path('app_login') }}" method="post">
-        <label for="username">Email:</label>
-        <input type="text" id="username" name="_username" value="{{ last_username }}">
+        <form action="{{ path('app_login') }}" method="post" class="flex flex-col">
 
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="_password">
+            <label for="username" class="mb-4 dark:text-darkBlack">
+                Email:
+            </label>
+            <input type="text" class="mb-10 dark:bg-darkBlack/60 dark:text-darkWhite font-semibold p-1" id="username" name="_username" value="{{ last_username }}">
 
-        {# If you want to control the URL the user is redirected to on success
+            <label for="password" class="mb-4 dark:text-darkBlack">
+                Password:
+            </label>
+            <input type="password" class=" dark:bg-darkBlack/60 dark:text-darkWhite font-semibold p-1" id="password" name="_password">
+
+            {# If you want to control the URL the user is redirected to on success
         <input type="hidden" name="_target_path" value="/account"> #}
-
-        <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
-        <button type="submit">login</button>
-    </form>
+            <div class="mt-10">
+                <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+                <button type="submit" class="bg-secondary text-white py-2 px-5 rounded-sm">login</button>
+            </div>
+        </form>
+    </div>
 {% endblock %}
