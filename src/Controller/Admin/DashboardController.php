@@ -11,6 +11,8 @@ use App\Entity\Image;
 use App\Entity\Service;
 use App\Entity\Setup;
 use App\Entity\SocialNetwork;
+use App\Repository\SetupRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
@@ -21,6 +23,26 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class DashboardController extends AbstractDashboardController
 {
+
+    private ?int $setupId = null;
+    public function __construct(private EntityManagerInterface $manager)
+    {
+        if ($this->manager->getRepository(Setup::class)->countSetups() !== 1){
+            $setup = new Setup();
+            $setup->setHomeHeadline("Ma phrase d'accroche");
+            $setup->setHomeSubHeadline("une mini phrase en plus");
+            $setup->setHomeCtaButton("Action");
+            $setup->setHomeSecondaryButton("Autre action");
+            $manager->persist($setup);
+            $manager->flush();
+
+//            $this->redirectToRoute("admin");
+        }
+
+        $this->setupId = $this->manager->getRepository(Setup::class)->getFirstId();
+
+    }
+
     #[Route('/admin', name: 'admin')]
     public function index(): Response
     {
@@ -60,7 +82,7 @@ class DashboardController extends AbstractDashboardController
             ]),
             MenuItem::linkToCrud('Reseaux Sociaux', 'fa-solid fa-newspaper', SocialNetwork::class),
             MenuItem::linkToCrud('Messages', 'fa-solid fa-envelope', Message::class),
-            MenuItem::linkToCrud('Configuration', 'fa-solid fa-cog', Setup::class)->setAction('edit')->setEntityId(1),
+            MenuItem::linkToCrud('Configuration', 'fa-solid fa-cog', Setup::class)->setAction('edit')->setEntityId($this->setupId),
         ];
         // yield MenuItem::linkToCrud('The Label', 'fas fa-list', EntityClass::class);
     }

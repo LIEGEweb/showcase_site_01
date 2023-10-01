@@ -37,9 +37,19 @@ class SetupRepository extends ServiceEntityRepository
     public function countSetups(): ?int
     {
         return $this->createQueryBuilder('s')
-            ->select('SUM(s.id) AS count' )
+            ->select('SUM(s.id) AS count')
             ->getQuery()
             ->getSingleScalarResult();
+    }
+
+    public function getFirstId(): ?int
+    {
+        $query = $this->createQueryBuilder('s')
+            ->getQuery()
+            ->getResult();
+
+        if ($query) return $query[0]->getId();
+        else return null;
     }
 
 //    /**
