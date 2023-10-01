@@ -44,6 +44,13 @@ class CompanyRepository extends ServiceEntityRepository
             ->getSingleScalarResult();
     }
 
+    public function getFirst(): ?object
+    {
+        return $this->createQueryBuilder('c')
+            ->getQuery()
+            ->getResult()[0];
+    }
+
 //    public function findOneBySomeField($value): ?Company
 //    {
 //        return $this->createQueryBuilder('c')

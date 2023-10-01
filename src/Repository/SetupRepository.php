@@ -34,6 +34,14 @@ class SetupRepository extends ServiceEntityRepository
             ->getOneOrNullResult();
     }
 
+    public function countSetups(): ?int
+    {
+        return $this->createQueryBuilder('s')
+            ->select('SUM(s.id) AS count' )
+            ->getQuery()
+            ->getSingleScalarResult();
+    }
+
 //    /**
 //     * @return Setup[] Returns an array of Setup objects
 //     */
