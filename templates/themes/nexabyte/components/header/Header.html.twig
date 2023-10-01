@@ -24,7 +24,8 @@
                 <li>
                     {{ component('Link', {
                         route: route,
-                        label: name
+                        label: name,
+                        class: "!text-black dark:!text-darkBlack"
                     }) }}
                 </li>
             {% endfor %}
@@ -41,7 +42,7 @@
                         {{ component('Link', {
                             route: route,
                             label: name,
-                            class: "!text-black !dark:text-darkBlack"
+                            class: "!text-black dark:!text-darkBlack"
                         }) }}
                     </li>
                 {% endfor %}
