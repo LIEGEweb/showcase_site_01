@@ -5,6 +5,7 @@ twig:
         app_theme: '%env(APP_THEME)%'
         app_album_section: '%env(APP_ALBUM_SECTION)%'
         app_socials: '@App\Service\GlobalSocialNetworks'
+        app_company_infos: '@App\Service\GlobalCompanyInfos'
 
 when@test:
     twig:

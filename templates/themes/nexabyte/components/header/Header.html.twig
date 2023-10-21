@@ -8,7 +8,7 @@
                     <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 9h16.5m-16.5 6.75h16.5"/>
                 </svg>
             </div>
-            <div class="flex items-center justify-center col-span-10 font-black text-lg text-black dark:text-darkBlack">Company</div>
+            <div class="flex items-center justify-center col-span-10 font-black text-lg text-black dark:text-darkBlack">{{ app_company_infos.name }}</div>
             <div class="flex items-center w-6 ">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="1.5"
                      stroke="currentColor" class="w-9 h-9 fill-current text-black/50 dark:text-darkBlack/50">
@@ -34,7 +34,7 @@
     </div>
     {#    desctop #}
     <div class="w-full px-8 hidden lg:grid grid-cols-12 gap-4 my-9" {{ stimulus_target('menu', 'desktop') }}>
-        <div class="col-span-3 flex items-center font-black text-lg text-black dark:text-darkBlack">Company</div>
+        <div class="col-span-3 flex items-center font-black text-lg text-black dark:text-darkBlack">{{ app_company_infos.name }}</div>
         <nav class="col-span-8 flex items-center">
             <ul class="flex justify-start items-center gap-5">
                 {% for route, name in routes %}
