@@ -10,7 +10,7 @@
 
 {% block body %}
     <div class="w-full relative" {{ stimulus_controller('gallery') }}>
-        <div class="absolute -z-30 top-0 left-1/4 block w-full aspect-video transition-all ease-in duration-300 pt-6 pv-6  pl-16 pr-16 opacity-0 bg-white dark:bg-darkWhite">
+        <div class="absolute -z-30 top-0 left-0 block w-full aspect-video transition-all ease-in duration-300 pt-6 pv-6  pl-16 pr-16 opacity-0 bg-white dark:bg-darkWhite">
             <button class="bg-secondary  border border-black/10 dark:border-black/10 text-white text-sm mb-1 rounded-md absolute top-12 right-20 z-10"
                     {{ stimulus_action('gallery', 'close', 'click') }}>
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
@@ -33,7 +33,7 @@
 
             <p class="p-12 text-lg leading-loose"> {{ album.description | raw }} </p>
 
-            <div class="grid grid-cols1 md:grid-cols-3 gap-16 p-12 py-16">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-16 p-12 py-16">
                 {% for image in album.images %}
                     <figure>
                         <img src="/images/albums/{{ image.fileName }}"
