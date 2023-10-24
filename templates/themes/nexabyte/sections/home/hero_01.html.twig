@@ -1,0 +1,38 @@
+{% extends 'themes/'~app_theme~'/layouts/home-section.html.twig' %}
+
+   {% block class %} !py-6 !px-0 {% endblock %}
+   {% block id %} hero {% endblock %}
+   {% block title_container %}{% endblock %}
+
+   {% block content %}
+       <div class="w-full p-0 flex relative ">
+           <div class="absolute top-1/2 -translate-y-1/2 px-4 py-8 backdrop-blur-sm bg-white/30 md:w-1/2 md:left-4 rounded-md">
+               {{ component ('H1', {
+                   label: setup.headline,
+                   class: ""
+               }) }}
+               {{ component ('H2', {
+                   label: setup.sub_headline,
+                   class: "text-left"
+               }) }}
+               <div class="flex justify-start items-end">
+                   {{ component ('Button', {
+                       label: 'Action',
+                       class: "!mb-0 mr-6 !dark:text-darkWhite"
+                   }) }}
+
+                   {{ component ('Link', {
+                       hrefLink: '#services',
+                       label: 'Autre action',
+                       class: '!font-bold  !dark:text-darkWhite'
+                   }) }}
+
+               </div>
+           </div>
+
+           <div class="-z-20 w-full block  aspect-74 md:aspect-video bg-no-repeat bg-center bg-cover {% if setup.cta_image is empty %} bg-gradient-to-r from-black/20 to-black/10 {% endif %}"
+                   {% if setup.cta_image is not empty %} style="background-image: url('/images/home/{{ setup.cta_image }}')"{% endif %} >
+           </div>
+       </div>
+
+   {% endblock %}
