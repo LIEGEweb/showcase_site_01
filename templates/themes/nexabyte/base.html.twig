@@ -1,11 +1,20 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr_BE">
 <head>
     <meta charset="UTF-8">
     <title>{% block title %}Welcome!{% endblock %}</title>
     <link rel="icon"
           href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="{% block meta_description %}Site description"{% endblock %}">
+    <link rel="icon"
+          href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:title" content="{% block og_title %}Welcome{% endblock %}">
+    <meta property="og:description" content="{% block og_description %} Site Description{% endblock %}">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="{{ app.request.uri }}">
+    <meta property="og:image" content="{% block og_image %} {% endblock %}">
     {% block stylesheets %}
         {{ encore_entry_link_tags('app') }}
     {% endblock %}
