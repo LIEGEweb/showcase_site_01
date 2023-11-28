@@ -1,8 +1,11 @@
 {% extends 'themes/'~app_theme~'/layouts/page-layout.html.twig' %}
 
-        {% block page_title %}
-            {{ component("H1", {label: "Contact"}) }}
-        {% endblock %}
+{#UNCOMMENT TO OVERRIDE BASE
+{% block title %} {% endblock %}
+{% block meta_description %}{% endblock %}
+{% block og_title %}{% endblock %}
+{% block og_description %}{% endblock %}
+{% block page_title %}  {{ component("H1", {label: "Contact"}) }} {% endblock %}#}
 
 {% block title %}Contact{% endblock %}
 
@@ -57,6 +60,11 @@
                             {{ form_widget(form.message, { 'attr': {'rows': '5', 'class': 'w-full h-40 rounded-md leading-loose border border-black/10'} }) }}
                             {{ form_errors(form.message, { 'attr': {'class': 'text-secondary leading-loose'} }) }}
                         </div>
+                        <div class="flex flex-col mb-6">
+                            {{ form_label(form.captcha, 'Merci de recopier les caractères ci-dessous', { 'label_attr': {'class': 'mb-3'} }) }}
+                            {{ form_widget(form.captcha, { 'attr': {'class': 'w-full rounded-md leading-loose border border-black/10 text-black px-3'} }) }}
+                            {{ form_errors(form.captcha, { 'attr': {'class': 'text-secondary leading-loose'} }) }}
+                        </div>
 
                         <div class="flex flex-col mb-6">
                             {{ form_widget(form.submit, {'label': 'Envoyer', 'attr': {'class': 'w-36 bg-secondary text-white dark:text-darkWhite px-6 py-2 rounded-sm'} }) }}
@@ -106,7 +114,8 @@
                         </svg>
                     </span>
                     {{ component('H3', {label: "Adresse", class: "py-3  text-black/70 dark:text-darkBlack/70"}) }}
-                    <p class="text-left pl-1/5"> {{ company.streetName }}{{ company.streetNr }} <br/>
+                    <p class="text-left pl-1/5"> {{ company.streetName }}{{ company.streetNr }}
+                        <br/>
                         {{ company.postalCode }}    {{ company.postalCity }}
                     </p>
                 </div>
