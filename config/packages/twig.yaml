@@ -1,11 +1,13 @@
 twig:
     default_path: '%kernel.project_dir%/templates'
+#    paths:
+#        '%kernel.project_dir%/templates/themes/%env(APP_THEME)%/components': components
     form_themes: ['tailwind_2_layout.html.twig']
     globals:
         app_theme: '%env(APP_THEME)%'
         app_album_section: '%env(APP_ALBUM_SECTION)%'
         app_socials: '@App\Service\GlobalSocialNetworks'
-        app_company_infos: '@App\Service\GlobalCompanyInfos'
+        app_company_infos: '@App\Dto\GlobalCompanyInfos'
 
 when@test:
     twig:
