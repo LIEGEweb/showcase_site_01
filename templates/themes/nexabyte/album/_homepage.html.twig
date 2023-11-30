@@ -1,0 +1,36 @@
+{% extends 'themes/'~app_theme~'/layouts/home-section.html.twig' %}
+
+   {% block id %} {{ app_album_section }} {% endblock %}
+ {% block class %} relative {% endblock %}
+        {#            background #}
+       {% block background %}
+           <svg class="absolute top-8 left-0 text-secondary/10 dark:text-secondary/30 h-full -z-10 opacity-50"
+                viewBox="0 0 450 797"
+                fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+               <path d="M449.5 448C460 714.5 257.884 790 135.001 790C86.4987 786 80 787.5 54.9987 787.5C-231.501 847.5 -73.9997 600.997 -73.9997 381.003C-75.2218 94.3933 -75.4999 43.0063 133.5 5.00253C342.501 -33.0012 449.5 196.71 449.5 448Z"/>
+           </svg>
+       {% endblock %}
+       {#        background #}
+{% block content %}
+    <div class="w-full relative">
+        {{ component('Home:HomeSectionHeader', {
+            title: app_album_section,
+            header: "Instantanés capturés",
+            description: "Témoins de mes activités et des moments précieux de ma vie quotidienne"
+        }) }}
+
+        <div class="w-full  grid grid-cols-2 md:grid-cols-3 gap-5 my-16  bg-secondary/10 ">
+
+            {% for image in images_from_albums %}
+                {{ component('Card:ImageHomeCard', {
+                    fileName: image.fileName,
+                    loop_index: loop.index,
+                    album_name: image.album.name,
+                    album_slug: image.album.slug,
+                }) }}
+
+            {% endfor %}
+        </div>
+        <twig:Button:Primary href="{{ path('app_albums_index') }}">Les Photos</twig:Button:Primary>
+    </div>
+{% endblock %}

@@ -3,8 +3,7 @@
 {% block title %} {{ app_album_section }} | {{ album.name }} {% endblock %}
 {% block page_title %}
     <div class="flex flex-col text-center">
-        {{ component("H1", {label: app_album_section}) }}
-        {{ component("H2", {label: album.name}) }}
+        <twig:Title:H1>{{  app_album_section }}</twig:Title:H1>
     </div>
 {% endblock %}
 
@@ -17,7 +16,6 @@
                      class=" text-white dark:text-darkWhite w-6 h-6">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
                 </svg>
-
             </button>
             <img src="/images/transparent_pixel.webp" alt="" class="w-10/12 m-auto relative"
                     {{ stimulus_target('gallery', 'big') }}>
@@ -29,21 +27,25 @@
         <div class="absolute -z-10 top-0 left-0 w-full h-1/2 block">
 
         </div>
-        <section class="w-full md:w-3/4 min-h-screen m-auto ">
+        <section class="w-full flex flex-col md:w-3/4 min-h-screen m-auto p-12 space-y-12 ">
+            <twig:Title:H2>{{ album.name }}</twig:Title:H2>
 
-            <p class="p-12 text-lg leading-loose"> {{ album.description | raw }} </p>
+            <p class="text-lg leading-loose"> {{ album.description | raw }} </p>
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-16 p-12 py-16">
+            <div class="grid grid-cols-2 md:grid-cols-3 gap-16">
                 {% for image in album.images %}
-                    <figure>
+                    <figure class="border-4 border-secondary/70 dark:border-white/50 rounded-[24px]">
                         <img src="/images/albums/{{ image.fileName }}"
                              alt="{{ image.alt }}"
-                             class="rounded-md shadow-sm md:hover:cursor-pointer"
-                                {{ stimulus_action('gallery', 'zoom', 'click') }}
-                        >
+                             class="rounded-[20px] md:hover:cursor-pointer"
+                                {{ stimulus_action('gallery', 'zoom', 'click') }}>
                     </figure>
                 {% endfor %}
             </div>
+
+            <twig:Button:Primary href="{{ path('app_albums_index') }}" class="md:w-1/4">
+                Retour à la liste
+            </twig:Button:Primary>
 
         </section>
     </div>

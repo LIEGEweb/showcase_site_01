@@ -1,13 +1,19 @@
-<article class="bg-[#ffffff] dark:bg-[#000000] p-3 rounded-md  border border-black/10 text-center mx-auto">
-    <figure>
-        <img src="/images/albums/{{ fileName }}" alt="{{ alt }}">
+<article class="bg-[#ffffff] dark:bg-[#000000] rounded-md  border border-black/10 text-center mx-auto">
+    <figure class="border-4  border-secondary dark:border-white/50 rounded-t-[24px] bg-no-repeat bg-cover bg-center">
+        <img src="/images/albums/{{ fileName }}" alt="{{ alt }}" class="rounded-t-[20px]">
     </figure>
 
-    {{ component('Link', {
-        label: name,
-        route: 'app_album_show',
-        slug: slug,
-        class: 'y-6 leading-loose text-xl font-semibold'
-    }) }}
-
+    <twig:link:Link href="{{ path('app_album_show', {slug: slug}) }}"
+                    class="y-8 leading-loose text-xl font-semibold">
+        {{ name }}
+    </twig:link:Link>
 </article>
+{# <article class="bg-[#ffffff] dark:bg-[#000000] p-3 rounded-md  border border-black/10 text-center mx-auto"> #}
+{#    <figure> #}
+{#        <img src="/images/albums/{{ fileName }}" alt="{{ alt }}"> #}
+{#    </figure> #}
+{#    <twig:link:Link href="{{ path('app_album_show', {slug: slug}) }}" #}
+{#                    class="y-6 leading-loose text-xl font-semibold"> #}
+{#        {{ name }} #}
+{#    </twig:link:Link> #}
+{# </article> #}
