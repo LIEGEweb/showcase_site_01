@@ -17,16 +17,12 @@
                 </svg>
             </div>
         </div>
-        <nav class="min-h-[50vh] pt-12 text-xl flex flex-col gap-5 text-black -mt-[vh] -z-40 transition-all duration-500 ease-in-out bg-white dark:bg-darkWhite"
+        <nav class="min-h-[50vh] pt-12 text-xl flex flex-col gap-5 text-black -mt-[70vh] -z-40 transition-all duration-500 ease-in-out bg-white dark:bg-darkWhite"
                 {{ stimulus_target('menu', 'nav') }}>
            <ul class="pl-6 pt-16">
             {% for route, name in routes %}
                 <li>
-                    {{ component('Link', {
-                        route: route,
-                        label: name,
-                        class: "!text-black dark:!text-darkBlack"
-                    }) }}
+                    <twig:link:Link class="!text-black dark:!text-darkBlack" href="{{ path(route) }}"> {{ name }} </twig:link:Link>
                 </li>
             {% endfor %}
            </ul>
@@ -39,11 +35,7 @@
             <ul class="flex justify-start items-center gap-5">
                 {% for route, name in routes %}
                     <li>
-                        {{ component('Link', {
-                            route: route,
-                            label: name,
-                            class: "!text-black dark:!text-darkBlack"
-                        }) }}
+                        <twig:link:Link class="!text-black dark:!text-darkBlack" href="{{ path(route) }}"> {{ name }} </twig:link:Link>
                     </li>
                 {% endfor %}
             </ul>
