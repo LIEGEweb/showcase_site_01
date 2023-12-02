@@ -14,13 +14,9 @@
                     {#                <div class="w-full aspect-video bg-gradient-to-r from-secondary/60 to-secondary/80 "></div> #}
                 {% endif %}
             </figure>
-            {{ component("H2", {
-                "label": subtitle,
-                "class": "text-secondary font-semibold text-sm"
-            }) }}
-            {{ component("H3", {
-                "label": label,
-            }) }}
+            <twig:Title:H2 class="text-secondary font-semibold text-sm"> {{ subtitle}} </twig:Title:H2>
+            <twig:Title:H3 > {{ label}} </twig:Title:H3>
+
             <div class="leading-loose pt-6 text-base text-black/80 dark:text-darkBlack/80 text-left">
                 {{ content | raw }}
             </div>
