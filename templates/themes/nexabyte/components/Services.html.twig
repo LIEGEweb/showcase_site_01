@@ -2,12 +2,7 @@
 <ul class="">
     {% for category in categories %}
         <li class="">
-            {{ component('Link', {
-                label: category.name,
-                route: 'app_services',
-                fragment: category.name,
-                class: '!text-black/50 dark:!text-darkBlack/50 hover:!text-[#000000] dark:hover:!text-[#ffffff]'
-            }) }}
+            <twig:link:Link href="{{ path('app_services') }}" class="!text-black/50 dark:!text-darkBlack/50 hover:!text-[#000000] dark:hover:!text-[#ffffff]">{{  category.name }}</twig:link:Link>
         </li>
 {#        <ul>#}
 {#            {% for service in category.services %}#}
