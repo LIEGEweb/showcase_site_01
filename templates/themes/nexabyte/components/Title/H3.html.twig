@@ -1,6 +1,5 @@
 <h3 {{ attributes.defaults({
     class: "text-left font-poppins-medium text-xl md:text-2xl font-semibold leading-5 pb-3"
-}) }}
-        id="{{ id }}">
-    {{ label }}
+}) }}>
+    {% block content %} {% endblock %}
 </h3>
