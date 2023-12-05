@@ -27,7 +27,7 @@ class DashboardController extends AbstractDashboardController
     private ?int $setupId = null;
     public function __construct(private EntityManagerInterface $manager)
     {
-        if ($this->manager->getRepository(Setup::class)->countSetups() !== 1){
+        if (count($this->manager->getRepository(Setup::class)->findAll()) === 0){
             $setup = new Setup();
             $setup->setHomeHeadline("Ma phrase d'accroche");
             $setup->setHomeSubHeadline("une mini phrase en plus");
