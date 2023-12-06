@@ -4,8 +4,9 @@ namespace App\Controller\Admin\Album;
 
 use App\Entity\Album;
 use App\Entity\Image;
-use App\Form\PhotoImageType;
+use App\Form\ImageType;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
+use EasyCorp\Bundle\EasyAdminBundle\Field\ArrayField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\BooleanField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\CollectionField;
@@ -30,6 +31,7 @@ class AlbumCrudController extends AbstractCrudController
                 ->useEntryCrudForm(ImageCrudController::class,
                 'new')
                 ->setEntryIsComplex(),
+//
 //               ->setEntryType(PhotoImageType::class)
 //               ->setEntryIsComplex(),
 //            AssociationField::new('images'),
