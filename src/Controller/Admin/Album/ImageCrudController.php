@@ -30,6 +30,7 @@ class ImageCrudController extends AbstractCrudController
                 ->setBasePath('images/albums/')
                 ->setUploadDir('public/images/albums/'),
             AssociationField::new('album'),
+            BooleanField::new('pinned'),
             BooleanField::new('published'),
         ];
     }
