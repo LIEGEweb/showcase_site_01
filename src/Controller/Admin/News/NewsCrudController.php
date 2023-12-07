@@ -22,6 +22,7 @@ class NewsCrudController extends AbstractCrudController
     {
         return [
             TextField::new('title')->setColumns(16),
+            TextField::new('excerpt')->setColumns(16),
             TextEditorField::new('content')->setColumns(16)->setNumOfRows(15),
             ImageField::new('image')
                 ->setBasePath('images/news/')

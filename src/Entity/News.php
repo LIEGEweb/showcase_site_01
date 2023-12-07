@@ -39,6 +39,8 @@ class News
     #[Gedmo\Slug(fields: ['title'])]
     private ?string $slug = null;
 
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $excerpt = null;
     public function getId(): ?int
     {
         return $this->id;
@@ -100,6 +102,18 @@ class News
     public function setSlug(string $slug): static
     {
         $this->slug = $slug;
+
+        return $this;
+    }
+
+    public function getExcerpt(): ?string
+    {
+        return $this->excerpt;
+    }
+
+    public function setExcerpt(?string $excerpt): static
+    {
+        $this->excerpt = $excerpt;
 
         return $this;
     }
