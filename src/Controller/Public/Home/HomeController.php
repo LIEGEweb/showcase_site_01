@@ -43,7 +43,7 @@ class HomeController extends AbstractController
             'servicesByCategoryGroup' => $servicesByCategoryGroup,
             "servicesImages" => $s,
             "news" => $news,
-            'images_from_albums' => $imageRepository->findRandomMultiple()
+            'images_from_albums' => $imageRepository->findPinned()
         ]);
     }
 }
