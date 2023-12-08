@@ -26,9 +26,13 @@ class Image
     #[ORM\ManyToOne(inversedBy: 'images')]
     private ?Album $album = null;
 
+    #[ORM\Column]
+    private ?bool $pinned = null;
+
     public function __construct()
     {
         $this->photosAlbums = new ArrayCollection();
+        $this->pinned = false;
     }
 
     public function __toString(): string
@@ -87,6 +91,18 @@ class Image
     public function setAlbum(?Album $album): static
     {
         $this->album = $album;
+
+        return $this;
+    }
+
+    public function isPinned(): ?bool
+    {
+        return $this->pinned;
+    }
+
+    public function setPinned(bool $pinned): static
+    {
+        $this->pinned = $pinned;
 
         return $this;
     }
