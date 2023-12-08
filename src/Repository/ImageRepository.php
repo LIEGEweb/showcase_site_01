@@ -33,6 +33,19 @@ class ImageRepository extends ServiceEntityRepository
         return $images[0];
     }
 
+    public function findPinned(): ?array
+    {
+        $images_all = $this->createQueryBuilder('i')
+            ->leftJoin('i.album', 'album')
+            ->select('i, album')
+            ->andWhere('i.pinned = :bool')
+            ->setParameter('bool', true)
+            ->setMaxResults(10)
+            ->getQuery()
+            ->getArrayResult();
+        shuffle($images_all);
+        return $images_all;
+    }
     public function findRandomMultiple($limit = 6): ?array
     {
         $images_all = $this->createQueryBuilder('i')
