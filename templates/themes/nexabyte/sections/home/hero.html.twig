@@ -6,25 +6,12 @@
 
    {% block content %}
        <div class="w-full p-0 flex relative ">
-           <div class="w-full  h-20 absolute top-0 left-0 z-40 bg-gradient-to-b from-white to-white/0 dark:from-black dark:to-black/0 block"> </div>
-           <div class="w-full  h-20 absolute bottom-0 left-0 z-40 bg-gradient-to-b from-white/0 to-white dark:from-black/0 dark:to-black block"> </div>
-           <div class="absolute w-11/12 top-1/2 -translate-y-1/2 left-1/2  md:left-9 -translate-x-1/2  md:translate-x-0 px-4 py-8 backdrop-blur-sm bg-white/30 md:w-1/2 md:left-4 rounded-md">
-               {{ component ('H1', {
-                   label: setup.headline,
-                   class: "!text-black-alt !text-darkWhiteAlt "
-               }) }}
+           <div class="w-full  h-20 absolute top-0 left-0  bg-gradient-to-b from-white to-white/0 dark:from-black dark:to-black/0 block"> </div>
+           <div class="w-full  h-20 absolute bottom-0 left-0  bg-gradient-to-b from-white/0 to-white dark:from-black/0 dark:to-black block"> </div>
+           <div class="absolute w-11/12 top-1/2 -translate-y-1/2 left-1/2 md:left-9 -translate-x-1/2  md:translate-x-0  px-4 py-8 backdrop-blur-sm bg-white/30 md:w-1/2 md:left-4 rounded-md">
+               <twig:Title:H1 class="!mx-0">{{ setup.headline }}</twig:Title:H1>
                <div class="flex justify-start items-end">
-                   {{ component ('Primary', {
-                       label: 'Action',
-                       class: "!mb-0 mr-6"
-                   }) }}
-
-                   {{ component ('Secondary', {
-                       label: 'Action',
-                       class: "!mb-0 mr-6 !bg-secondary/10",
-                       href: "google.com"
-                   }) }}
-
+                   <twig:Button:Primary  href="{{ path('app_contact') }}" class="!mb-0 mr-6" >Je contacte</twig:Button:Primary>
                </div>
            </div>
 
@@ -34,10 +21,7 @@
 
        </div>
        <div class="my-16 px-5">
-           {{ component ('H2', {
-               label: setup.sub_headline,
-               class: "text-left"
-           }) }}
+           <twig:Title:H2 class="text-left">{{ setup.sub_headline }}</twig:Title:H2>
        </div>
 
    {% endblock %}

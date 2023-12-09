@@ -7,14 +7,8 @@
    {% block content %}
        <div class="w-full p-0 flex relative ">
            <div class="absolute top-1/2 -translate-y-1/2 px-4 py-8 backdrop-blur-sm bg-white/30 md:w-1/2 md:left-4 rounded-md">
-               {{ component ('H1', {
-                   label: setup.headline,
-                   class: ""
-               }) }}
-               {{ component ('H2', {
-                   label: setup.sub_headline,
-                   class: "text-left"
-               }) }}
+               <twig:Title:H1>{{ setup.headline }}</twig:Title:H1>
+               <twig:Title:H2 class="text-left">{{ setup.sub_headline }}</twig:Title:H2>
                <div class="flex justify-start items-end">
                    {{ component ('Button', {
                        label: 'Action',
