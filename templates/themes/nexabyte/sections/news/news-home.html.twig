@@ -2,7 +2,7 @@
 
    {% block id %} News {% endblock %}
    {% block content %}
-       {{ component('HomeSectionHeader', {
+       {{ component('Home:HomeSectionHeader', {
            title: "News",
            header: "Restez informé avec nos actualités récentes dans la section News.",
            description: ""
@@ -10,12 +10,8 @@
       
        <div class="w-full md:w-2/3 mx-auto my-16 grid grid-cols-1 md:grid-cols-2 gap-5">
            {% for item in news %}
-               {{ component('News', {news: item}) }}
+               {{ component('news:News', {news: item}) }}
            {% endfor %}
-
-           {{ component("Button", {
-               'label': 'Toutes les actus',
-               'route': 'app_news'
-           }) }}
+           <twig:Button:Primary href="{{ path('app_news') }}"> Toutes les actus </twig:Button:Primary>
        </div>
    {% endblock %}

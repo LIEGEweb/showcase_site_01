@@ -2,10 +2,10 @@
 
 {% block item %}
 
-    {{ component('News', {news: item}) }}
+    {{ component('news:News', {news: item}) }}
 {% endblock %}
 {% block item_right %}
 
-    {{ component('News', {news: item}) }}
-    {# {{ component('Card', {label: item.title, description: item.content, folder: 'news', image: item.image}) }} #}
+{#    {{ component('news:News', {news: item}) }}#}
+     {{ component('Card:Card', {label: item.title, description: item.content, folder: 'news', image: item.image}) }}
 {% endblock %}
