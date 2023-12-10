@@ -1,6 +1,6 @@
 {% extends 'themes/'~app_theme~'/layouts/home-section.html.twig' %}
 
-   {% block id %} services{% endblock %}
+   {% block id %}services{% endblock %}
    {% block class %} relative {% endblock %}
            {#            background #}
            {% block background %}
@@ -13,8 +13,7 @@
            {#        background #}
    {% block content %}
        <div class="w-full relative">
-
-           {{ component('HomeSectionHeader', {
+           {{ component('Home:HomeSectionHeader', {
                title: "Services",
                header: "Je mets à disposition mes services, n'hésitez pas à me contacter.",
                description: "Fort d'une vaste gamme de compétences et
@@ -27,31 +26,21 @@
                <article class="w-full md:w-3/4 mx-auto my-16">
                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-24">
                        {% for category in servicesByCategoryGroup %}
-                           <div class="w-1/2 md:w-full m-auto bg-[#FFFFFF] dark:bg-[#000000] border border-black/5 dark:border-darkBlack/5 p-6">
-                               {{ component("H4", {
-                                   "label": category.name,
-                                   "class": "pt-14 before:absolute before:-top-1.5 before:left-0 before:bg-secondary/40 before:bg-icon-nurse-white before:bg-[length:50%_50%] before:bg-no-repeat before:bg-center before:content-[''] before:w-12 before:h-12 before:rounded-full"
-                               }) }}
+                           <!-- Category Card -->
+                           <div class="w-5/6 md:w-full m-auto bg-[#FFFFFF] dark:bg-[#000000] border border-black/5 dark:border-darkBlack/5 p-6">
+                             <twig:Title:H4 class="pt-14 before:absolute before:-top-1.5 before:left-0 before:bg-secondary/40 before:bg-icon-nurse-white before:bg-[length:50%_50%] before:bg-no-repeat before:bg-center before:content-[''] before:w-12 before:h-12 before:rounded-full"> {{ category.name}} </twig:Title:H4>
                                <ul class="">
                                    {% for service in category.services %}
                                        <li class="relative ">
-                                           {{ component('Link', {
-                                               class: 'font-poppins-regular text-sm !text-black/90 dark:!text-darkBlack/90 hover:!text-secondary no-underline hover:underline',
-                                               label: service.name, route: 'app_services',
-                                               fragment: service.id
-                                           }) }}
+                                           <twig:link:Link href="{{ path('app_services', {id: service.id}) }}" class="font-poppins-regular text-sm !text-black/90 dark:!text-darkBlack/90 hover:!text-secondary no-underline hover:underline"> {{ service.name}} </twig:link:Link>
                                        </li>
                                    {% endfor %}
                                </ul>
                            </div>
-
+                           <!--  END Category Card -->
                        {% endfor %}
                    </div>
-                   {{ component("Button", {
-                       'class': 'font-poppins-medium',
-                       'label': 'Découvrez les services',
-                       'route': 'app_services'
-                   }) }}
+                   <twig:Button:Primary href="{{ path('app_services') }}" class="font-poppins-medium"> Découvrez les services </twig:Button:Primary>
                </article>
            {% endif %}
        </div>

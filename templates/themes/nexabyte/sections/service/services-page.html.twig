@@ -2,5 +2,11 @@
 
 {% block item %}
 
-{{ component('ServiceCard', {label: item.name , content: item.description, image: item.image, alt: item.name, subtitle: item.category.name}) }}
+    {{ component('Card:ServiceCard', {
+        label: item.name ,
+        content: item.description,
+        image: item.image,
+        alt: item.name,
+        subtitle: item.category.name
+    }) }}
 {% endblock %}
