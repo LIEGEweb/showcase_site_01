@@ -23,7 +23,7 @@ class SetupRepository extends ServiceEntityRepository
 
     public function homeSetup()
     {
-        return $this->createQueryBuilder('s')
+        $result = $this->createQueryBuilder('s')
             ->addSelect('s.homeHeadline AS headline')
             ->addSelect('s.homeSubHeadline AS sub_headline')
             ->addSelect('s.homeCtaButton AS cta_button')
@@ -31,7 +31,9 @@ class SetupRepository extends ServiceEntityRepository
             ->addSelect('s.homeCtaImage AS cta_image')
             ->addSelect('s.homeCtaImageAlt AS cta_image_alt')
             ->getQuery()
-            ->getOneOrNullResult();
+            ->getResult();
+
+        return $result[0];
     }
 
     public function countSetups(): ?int
