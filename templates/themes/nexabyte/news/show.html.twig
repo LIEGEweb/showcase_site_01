@@ -1,0 +1,34 @@
+{% extends 'themes/'~app_theme~'/layouts/page-layout.html.twig' %}
+
+        {% block page_title %}
+            <twig:Title:H1>{{ news.titl }}</twig:Title:H1>
+        {% endblock %}
+
+{% block title %}{{ news.title}} | création de site web à Liège pour l’HoReCa{% endblock %}
+{% block meta_description %} {{ news.excerpt}} | création de site web à Liège pour l’HoReCa{% endblock %}
+{% block og_title %}{{ news.title}} | création de site web à Liège pour l’HoReCa{% endblock %}
+{% block og_description %}{{ news.excerpt}}  | création de site web à Liège pour l’HoReCa{% endblock %}
+{% block og_image %} {{ asset('/images/news/'~news.image )}} {% endblock %}
+
+{% block body %}
+    <div  class="w-full flex flex-col md:w-2/3 mx-auto p-6 md:p-0 text-lg leading-loose">
+        <div>
+            {{ news.excerpt |raw }}
+        </div>
+        <figure class="w-full relative flex justify-center items-center py-16">
+            {#            <svg class="h-full text-secondary/40 absolute top-0 right-0 -z-10"#}
+            {#                 viewBox="0 0 862 964" fill="currentColor" xmlns="http://www.w3.org/2000/svg">#}
+            {#                <path d="M996.501 458.001C996.501 634.323 807 861.5 730 887C653 912.5 616.71 890.845 550.502 898.5C353.003 1093 -152.998 808 108.502 569.5C41.6152 458.248 2.00128 335.94 2.00128 242C-24.9991 -105 252.002 -2.5002 432.501 91C540.002 135 632.002 64.9998 808.002 117.5C928.27 175.084 996.501 335.071 996.501 458.001Z" />#}
+            {#            </svg>#}
+            <svg  class="h-full text-secondary/10 absolute top-0 left-1/2 -translate-x-1/2 -z-10"
+                  viewBox="0 0 953 801" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path d="M952 332.5C948 410 937.5 601 740 695.5C673.062 742.526 558.326 680.045 476.5 711.5C333 781 259 831.5 146.501 777.5C28.4618 736.717 -39.1901 540.287 26.5018 339C70.5009 133.5 166.5 -38.5 474 8C694.638 8 968.516 12.5002 952 332.5Z"/>
+            </svg>
+
+            <img class="w-full md:w-96"
+                 src="/images/news/{{ news.image }}" alt="{{ news.title }}|image" />
+        </figure>
+        {{ news.content |raw }}
+    </div>
+
+{% endblock %}
