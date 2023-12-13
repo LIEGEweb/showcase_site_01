@@ -6,7 +6,7 @@
        <div class="w-full flex justify-start">
            {% for social_item in app_socials.get %}
 
-               {{ component('SocialHomeCard', {
+               {{ component('Card:SocialHomeCard', {
                    name: social_item.name,
                    url: social_item.url
                }) }}
