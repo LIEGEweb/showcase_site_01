@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr_BE">
+<html lang="fr_BE" >
 <head>
     <meta charset="UTF-8">
     <title>{% block title %}Welcome!{% endblock %}</title>
@@ -15,25 +15,36 @@
     <meta property="og:type" content="website">
     <meta property="og:url" content="{{ app.request.uri }}">
     <meta property="og:image" content="{% block og_image %} {% endblock %}">
+
     {% block stylesheets %}
-        {{ encore_entry_link_tags('app') }}
+        <link rel="stylesheet" href="{{ asset('styles/app.css') }}">
     {% endblock %}
 
     {% block javascripts %}
-        {{ encore_entry_script_tags('app') }}
+        {% block importmap %}
+            {{ importmap('app')}}
+        {% endblock %}
     {% endblock %}
+
 </head>
-<body class=" w-screen bg-white dark:bg-darkWhite text-black dark:text-darkBlack/50 p-1 font-poppins-regular relative {% block body_class %} {% endblock %} ">
+<body class="w-screen min-h-screen font-poppins-regular bg-light-neutral text-light-text-base dark:bg-dark-neutral dark:text-dark-text-base{% block body_class %} {% endblock %} ">
 {% block body_background %} {% endblock %}
-{{ component('Header:Header', {
-    routes: {
-        'app_home': 'Accueil',
-        'app_news': 'News',
-        'app_services': 'Services',
-        'app_albums_index': 'Photos',
-    }
-}) }}
-<main class="flex flex-col justify-between w-full md:max-w-[90rem] min-h-screen shadow shadow-md dark:shadow-darkBlack/30 md:mt-12  m-auto">
+{% include '_parts/_header.html.twig' with {routes: {
+    'app_home': 'Accueil',
+    'app_news': 'News',
+    'app_services': 'Services',
+    'app_albums_index': 'Photos',
+}} %}
+
+{#{{ component('Header:Header', { #}
+{#    routes: { #}
+{#        'app_home': 'Accueil', #}
+{#        'app_news': 'News', #}
+{#        'app_services': 'Services', #}
+{#        'app_albums_index': 'Photos', #}
+{#    } #}
+{# }) }} #}
+<main class="flex flex-col justify-between h-full w-full md:max-w-6xl md:max-w-7xl shadow shadow-md shadow-dark-neutral-light/30 dark:shadow-light-neutral/30 md:mt-12  m-auto">
     {% for message in app.flashes('success') %}
         <div class="w-full bg-primary/10 text-primary py-6 px-3">
             {{ message }}
@@ -42,7 +53,7 @@
     <div class="w-full p-0m-0">
         {% block body %}{% endblock %}
     </div>
-    {% include 'themes/'~app_theme~'/_parts/_footer.html.twig' %}
+    {% include '/_parts/_footer.html.twig' %}
 
 </main>
 </body>
