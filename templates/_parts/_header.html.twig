@@ -1,0 +1,58 @@
+<div class="w-full  bg-light-neutral-light/60 text-light-text-base dark:bg-dark-neutral-light/60 dark:text-dark-text-base backdrop-blur-md  py-4 lg:py-px sticky  top-4 z-10">
+    <header class="w-full md:max-w-6xl md:max-w-7xl py-2 h-auto m-auto" {{ stimulus_controller('menu') }}>
+        {#    mobile #}
+        <div class="lg:hidden w-full" {{ stimulus_target('menu', 'mobile') }}>
+            <div class=" w-full p-4 text-light-text-base dark:text-dark-text-base  grid grid-cols-12 gap-4 ">
+                <div class="grid place-content-center cursor-pointer  text-light-text-base dark:text-dark-text-base" {{ stimulus_action('menu', 'toggle', 'click') }}>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                         class="h-9 w-9 font-black align-self-center align-middle fill-current  text-light-text-base dark:text-dark-text-base">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 9h16.5m-16.5 6.75h16.5"/>
+                    </svg>
+                </div>
+                <div class="flex items-center justify-center col-span-10 font-black text-xl text-light-text-base dark:text-dark-text-base">{{ app_company_infos.name }}</div>
+                <div class="flex items-center w-6 ">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="1.5"
+                         stroke="currentColor" class="w-9 h-9 fill-current text-light-text-base/50 dark:text-dark-text-base/50">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                              d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z"/>
+                    </svg>
+                </div>
+            </div>
+            <nav class="min-h-[50vh] pt-12 text-xl flex flex-col gap-5 text-light-text-base -mt-[70vh] -z-40 transition-all duration-500 ease-in-out bg-clear dark:bg-darkWhite"
+                    {{ stimulus_target('menu', 'nav') }}>
+                <ul class="pl-6 pt-16">
+                    {% for route, name in routes %}
+                        <li>
+                            <twig:link:Link class=""
+                                            href="{{ path(route) }}"> {{ name }} </twig:link:Link>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </nav>
+        </div>
+        {#    desktop #}
+        <div class="w-full px-8 hidden lg:grid grid-cols-12 gap-4 my-9" {{ stimulus_target('menu', 'desktop') }}>
+            <div class="col-span-3 flex items-center font-black text-lg text-light-text-base dark:text-dark-text-base">{{ app_company_infos.name }}</div>
+            <nav class="col-span-8 flex items-center">
+                <ul class="flex justify-start items-center gap-5">
+                    {% for route, name in routes %}
+                        <li>
+                            {% if (app.request.get('_route') == route) %}
+                                {% set class="border-b-2  border-dark-neutral font-black " %}
+                            {% else %} {% set class="" %}
+                            {% endif %}
+                            <twig:link:Link href="{{ path(route) }}" class="{{ class }}"> {{ name }} </twig:link:Link>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </nav>
+            <div class="">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="1.5"
+                     stroke="currentColor" class="w-9 h-9 fill-current text-light-text-base/50 dark:text-dark-text-base/50">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                          d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z"/>
+                </svg>
+            </div>
+        </div>
+    </header>
+</div>
