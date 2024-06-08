@@ -1,0 +1,16 @@
+{% extends '/base.html.twig' %}
+
+{% block title %}Hello HomeController!{% endblock %}
+
+{% block body %}
+
+    {% if setup is not empty %}
+        {% include '/sections/home/hero.html.twig' %}
+    {% endif %}
+    {% include '/sections/service/services.html.twig' %}
+    {% include '/sections/news/news-home.html.twig' %}
+    {% include '/album/_homepage.html.twig' %}
+{#    {% include '/sections/album/albums-home.html.twig' %}#}
+    {% include '/sections/social-networks/home.html.twig' %}
+
+{% endblock %}
