@@ -1,8 +1,0 @@
-{% extends 'themes/'~app_theme~'/base.html.twig' %}
-
-{% block title %}News{% endblock %}
-
-{% block body %}
-    {{ component("H1", {label: "Les Actus"}) }}
-    {% include 'themes/'~app_theme~'/sections/news-page.html.twig' with {'items': news} %}
-{% endblock %}
