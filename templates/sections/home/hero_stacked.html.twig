@@ -1,0 +1,29 @@
+{% extends '/layouts/home-section.html.twig' %}
+
+   {% block class %} !py-6 !px-0 {% endblock %}
+   {% block id %} hero {% endblock %}
+   {% block title_container %}{% endblock %}
+
+   {% block content %}
+       <div class="w-full h-full mx-auto p-8 flex flex-col justify-center space-y-12">
+
+           <div class="w-full mx-auto space-y-4 lg:w-11/12 text-center">
+               <twig:Title:H1 class="">{{ setup.headline }}</twig:Title:H1>
+               <twig:Title:H2 class="">{{ setup.sub_headline }}</twig:Title:H2>
+
+               <div class="flex justify-center mx-auto space-x-12">
+                   <twig:Button:Primary href="{{ path('app_contact') }}" class="">
+                       Je contacte
+                   </twig:Button:Primary>
+               </div>
+           </div>
+
+           {% if setup.cta_image is not empty %}
+               <img src="{{ asset('/images/home/'~setup.cta_image) }}"
+                    class="inline-flex w-full mx-auto lg:w-3/4 border-md"
+                    alt="Image de landing page {{ app_company_infos.name }}">
+           {% endif %}
+
+       </div>
+
+   {% endblock %}
