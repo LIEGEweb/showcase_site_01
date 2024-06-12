@@ -1,0 +1,34 @@
+<section class="my-4 flex flex-col justify-center {% block class %} {% endblock %}"
+         id="{% block id %}#{% endblock %}">
+    {% block background %} {% endblock %}
+
+    {% block section_header %}
+        <div class="w-full lg:w-3/4 mx-auto space-y-12 my-32">
+            {% if title is defined %}
+                <twig:Title:H2 class="font-poppins-semibold !text-light-text-highlight !dark:text-dark-text-highlight">
+                    {{ title }}
+                </twig:Title:H2>
+            {% endif %}
+
+            <div class="mx-auto space-y-8">
+                {% if header is defined %}
+                    <twig:Title:H3>{{ header }}</twig:Title:H3>
+                {% endif %}
+
+                {% if description is defined %}
+                    <p class="font-poppins-regular text-base leading-relaxes">
+                        {{ description }}
+                    </p>
+                {% endif %}
+            </div>
+        </div>
+    {% endblock %}
+    <div class=" lg:w-3/4 mx-auto text-left relative">
+        {% block content %}    {% endblock %}
+    </div>
+
+    <div class="w-full lg:w-3/4 mx-auto">
+        {% block button_link %}
+        {% endblock %}
+    </div>
+</section>
