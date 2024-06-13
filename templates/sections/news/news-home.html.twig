@@ -1,0 +1,23 @@
+{% extends '/layouts/home-section.html.twig' %}
+    {% set title = "News / Actus" %}
+    {% set header = "Gardez vos visiteurs ou clients constamment informés en ajoutant une section actualités " %}
+    {% set description = "" %}
+
+{% block id %} News {% endblock %}
+   {% block content %}
+       <div class="w-full mx-auto my-16 grid grid-cols-1 md:grid-cols-2 gap-6 mb-24 relative">
+           {#       <div class="w-full md:w-2/3 mx-auto my-16 grid grid-cols-1 md:grid-cols-2 gap-5"> #}
+           {% for item in news %}
+               {{ component('news:News', {news: item}) }}
+           {% endfor %}
+
+       </div>
+
+   {% endblock %}
+
+{% block button_link %}
+    <twig:Button:Primary href="{{ path('app_news') }}"
+                         class="font-poppins-medium bg-light-text-highlight dark:bg-dark-text-highlight">
+        Toutes les actus
+    </twig:Button:Primary>
+{% endblock %}
