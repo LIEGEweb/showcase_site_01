@@ -1,0 +1,55 @@
+{% extends '/layouts/home-section.html.twig' %}
+{% set title = "Services" %}
+{% set header = "Je mets à disposition mes services, n'hésitez pas à me contacter." %}
+{% set description = "Fort d'une vaste gamme de compétences et
+                   d'expertises, je vous propose mes services avec enthousiasme. Que ce soit pour répondre à vos besoins professionnels ou personnels,
+                   je suis là pour vous accompagner." %}
+
+   {% block id %}services{% endblock %}
+   {% block class %} relative {% endblock %}
+           {#            background #}
+           {% block background %}
+               <svg class="absolute top-8 left-0 text-dark-neutral/10 dark:text-light-neutral/10 h-full -z-10 opacity-50"
+                    viewBox="0 0 485 828"
+                    fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                   <path d="M434.5 488C590 801 351.5 869 158 805.5C95.4824 784.984 25.4824 813 2.98242 809.5C-114.961 736.357 -118 599.519 -118 421C-118 280.132 -71.719 132.423 5.00008 56C63.5001 19.5 119.825 0 186 0C328.044 0 295.055 167.72 351.858 344.059C351.951 344.349 352.084 344.617 352.259 344.867C374.915 377.122 398.086 454.716 434.5 488Z"/>
+               </svg>
+           {% endblock %}
+           {#        background #}
+   {% block content %}
+           {% if servicesByCategoryGroup is not empty %}
+{#               <article class="w-full md:w-3/4 mx-auto my-16">#}
+                   <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-24 relative">
+                       <span class="hidden md:inline-block absolute bottom-8 right-32 font-black  text-8xl opacity-25 -z-40">
+                       <twig:ux:icon name="heroicons:arrow-top-right-on-square"/>
+                       </span>
+                       {% for category in servicesByCategoryGroup %}
+                           <!-- Category Card -->
+                           <article class="w-full m-auto bg-light-neutral-light dark:bg-dark-neutral-light border border-dark-neutral/40 dark:border-light-neutral/40 shadow-inner p-4">
+                               <twig:Title:H4
+                                       class="pt-16 relative before:absolute before:-top-1.5 before:left-0 before:bg-dark-neutral before:bg-icon-nurse-white before:bg-[length:50%_50%] before:bg-no-repeat before:bg-center before:content-[''] before:w-12 before:h-12 before:rounded-full">
+                                   {{ category.name }}
+                               </twig:Title:H4>
+                               <ul class="pl-4">
+                                   {% for service in category.services %}
+                                       <li class="relative ">
+                                           <twig:link:Link href="{{ path('app_services', {id: service.id}) }}"
+                                                           class="font-poppins-regular text-base !text-light-text-base dark:!text-dark-text-base hover:font-semibold no-underline hover:underline"> {{ service.name }} </twig:link:Link>
+                                       </li>
+                                   {% endfor %}
+                               </ul>
+                           </article>
+                           <!--  END Category Card -->
+                       {% endfor %}
+                   </div>
+
+{#               </article>#}
+           {% endif %}
+
+   {% endblock %}
+{% block button_link %}
+    <twig:Button:Primary href="{{ path('app_services') }}"
+                         class="font-poppins-medium bg-light-text-highlight dark:bg-dark-text-highlight">
+        Découvrez les services
+    </twig:Button:Primary>
+{% endblock %}
