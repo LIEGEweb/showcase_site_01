@@ -27,6 +27,7 @@ class SetupRepository extends ServiceEntityRepository
             ->addSelect('s.homeHeadline AS headline')
             ->addSelect('s.homeSubHeadline AS sub_headline')
             ->addSelect('s.homeCtaButton AS cta_button')
+            ->addSelect('s.homeCtaAction AS cta_action')
             ->addSelect('s.homeSecondaryButton AS secondary_button')
             ->addSelect('s.homeCtaImage AS cta_image')
             ->addSelect('s.homeCtaImageAlt AS cta_image_alt')

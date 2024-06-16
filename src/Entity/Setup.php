@@ -22,8 +22,14 @@ class Setup
     #[ORM\Column(length: 15, nullable: true)]
     private ?string $homeCtaButton = "cta";
 
+    #[ORM\Column(length: 100, nullable: true)]
+    private ?string $homeCtaAction = null;
+
     #[ORM\Column(length: 15, nullable: true)]
     private ?string $homeSecondaryButton = "secondary";
+
+    #[ORM\Column(length: 100, nullable: true)]
+    private ?string $homeSecondaryAction = null;
 
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $homeCtaImage = null;
@@ -107,4 +113,30 @@ class Setup
 
         return $this;
     }
+
+    public function getHomeCtaAction(): ?string
+    {
+        return $this->homeCtaAction;
+    }
+
+    public function setHomeCtaAction(?string $homeCtaAction): static
+    {
+        $this->homeCtaAction = $homeCtaAction;
+
+        return $this;
+    }
+
+    public function getHomeSecondaryAction(): ?string
+    {
+        return $this->homeSecondaryAction;
+    }
+
+    public function setHomeSecondaryAction(?string $homeSecondaryAction): static
+    {
+        $this->homeSecondaryAction = $homeSecondaryAction;
+
+        return $this;
+    }
+
+
 }

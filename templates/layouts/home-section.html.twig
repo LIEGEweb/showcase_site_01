@@ -1,9 +1,9 @@
-<section class="my-4 flex flex-col justify-center {% block class %} {% endblock %}"
+<section class="w-full  mx-auto my-4 p-8 lg:p-24 flex flex-col justify-center {% block class %} {% endblock %}"
          id="{% block id %}#{% endblock %}">
     {% block background %} {% endblock %}
 
     {% block section_header %}
-        <div class="w-full lg:w-3/4 mx-auto space-y-12 my-32">
+        <div class="w-2/3 lg:w-1/2 mx-auto space-y-12 my-32">
             {% if title is defined %}
                 <twig:Title:H2 class="font-poppins-semibold !text-light-text-highlight !dark:text-dark-text-highlight">
                     {{ title }}
@@ -23,11 +23,11 @@
             </div>
         </div>
     {% endblock %}
-    <div class=" lg:w-3/4 mx-auto text-left relative">
+    <div class="w-full mx-auto text-left relative">
         {% block content %}    {% endblock %}
     </div>
 
-    <div class="w-full lg:w-3/4 mx-auto">
+    <div class="w-full  mx-auto my-4">
         {% block button_link %}
         {% endblock %}
     </div>

@@ -140,4 +140,16 @@ class Album
 
         return $this;
     }
+
+    public function isHome(): ?bool
+    {
+        return $this->isHome;
+    }
+
+    public function setHome(bool $isHome): static
+    {
+        $this->isHome = $isHome;
+
+        return $this;
+    }
 }
