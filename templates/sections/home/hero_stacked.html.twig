@@ -14,13 +14,13 @@
                <twig:Title:H2 class="">{{ setup.sub_headline }}</twig:Title:H2>
 
                <div class="flex flex-col md:flex-row justify-center mx-auto space-y-12 md:space-y-0 space-x-0 md:space-x-12">
-                   <twig:Button:Primary href="{{ path('app_contact') }}"
-                                        class="bg-light-text-highlight dark:bg-dark-text-highlight">
-                       Je contacte
+                   <twig:Button:Primary href=" {{ setup.cta_action}}"
+                                        class="!min-w-26 bg-light-text-highlight dark:bg-dark-text-highlight !text-dark-text-base !font-black border border-text-dark-text-base">
+                       {{ setup.cta_button }}
                    </twig:Button:Primary>
                    <twig:Button:Secondary href="{{ path('app_contact') }}"
-                                          class="border-light-text-highlight dark:border-dark-text-highlight">
-                       Je contacte
+                                          class="!min-w-26 border-light-text-highlight dark:border-dark-text-highlight">
+                       {{ setup.secondary_button }}
                    </twig:Button:Secondary>
                </div>
            </div>
