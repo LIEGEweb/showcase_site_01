@@ -4,6 +4,8 @@
    {% block id %} hero {% endblock %}
    {% block title_container %}{% endblock %}
 
+  {% block section_header %} {% endblock %}
+
    {% block content %}
        <div class="w-full h-full mx-auto p-8 flex flex-col justify-center gap-y-16">
 
@@ -11,11 +13,13 @@
                <twig:Title:H1 class="">{{ setup.headline }}</twig:Title:H1>
                <twig:Title:H2 class="">{{ setup.sub_headline }}</twig:Title:H2>
 
-               <div class="flex justify-center mx-auto space-x-12">
-                   <twig:Button:Primary href="{{ path('app_contact') }}" class="">
+               <div class="flex flex-col md:flex-row justify-center mx-auto space-y-12 md:space-y-0 space-x-0 md:space-x-12">
+                   <twig:Button:Primary href="{{ path('app_contact') }}"
+                                        class="bg-light-text-highlight dark:bg-dark-text-highlight">
                        Je contacte
                    </twig:Button:Primary>
-                   <twig:Button:Secondary href="{{ path('app_contact') }}" class="">
+                   <twig:Button:Secondary href="{{ path('app_contact') }}"
+                                          class="border-light-text-highlight dark:border-dark-text-highlight">
                        Je contacte
                    </twig:Button:Secondary>
                </div>
