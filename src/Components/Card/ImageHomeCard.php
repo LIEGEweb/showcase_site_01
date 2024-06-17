@@ -4,7 +4,7 @@ namespace App\Components\Card;
 
 use Symfony\UX\TwigComponent\Attribute\AsTwigComponent;
 
-#[AsTwigComponent (template: 'themes/%env(APP_THEME)%/components/card/Image-home-card.html.twig')]
+#[AsTwigComponent (template: 'components/card/Image-home-card.html.twig')]
 class ImageHomeCard
 {
     public function __construct(public ?string $album_name = "",

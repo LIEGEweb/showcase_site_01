@@ -1,3 +1,32 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    @font-face {
+        font-family: NotoSans-Black;
+        src: url("../fonts/Noto_Sans/NotoSans-Black.ttf") format("opentype");
+    }
+    @font-face {
+        font-family: NotoSans-Bold;
+        src: url("../fonts/Noto_Sans/NotoSans-Bold.ttf") format("opentype");
+    }
+    @font-face {
+        font-family: 'Poppins-regular', sans-serif;
+        src: url("../fonts/Poppins/Poppins-Regular.ttf") format("opentype");
+    }
+    @font-face {
+        font-family: 'Poppins-semibold', sans-serif;
+        src: url("../fonts/Poppins/Poppins-SemiBold.ttf") format("opentype");
+    }
+    @font-face {
+        font-family: 'Poppins-medium', sans-serif;
+        src: url("../fonts/Poppins/Poppins-Medium.ttf") format("opentype");
+    }
+}
+
+
