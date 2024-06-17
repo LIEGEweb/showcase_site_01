@@ -8,6 +8,7 @@ use App\Entity\Message;
 use App\Entity\News;
 use App\Entity\Album;
 use App\Entity\Image;
+use App\Entity\SectionManager;
 use App\Entity\Service;
 use App\Entity\Setup;
 use App\Entity\SocialNetwork;
@@ -25,9 +26,10 @@ class DashboardController extends AbstractDashboardController
 {
 
     private ?int $setupId = null;
+
     public function __construct(private EntityManagerInterface $manager)
     {
-        if (count($this->manager->getRepository(Setup::class)->findAll()) === 0){
+        if (count($this->manager->getRepository(Setup::class)->findAll()) === 0) {
             $setup = new Setup();
             $setup->setHomeHeadline("Ma phrase d'accroche");
             $setup->setHomeSubHeadline("une mini phrase en plus");
@@ -69,21 +71,23 @@ class DashboardController extends AbstractDashboardController
 
     public function configureMenuItems(): iterable
     {
-        return [
-            MenuItem::linkToDashboard('Dashboard', 'fa-solid fa-home'),
-            MenuItem::subMenu('Services', 'fa-solid fa-tags')->setSubItems([
+        yield MenuItem::linkToDashboard('Dashboard', 'fa-solid fa-home');
+        yield MenuItem::subMenu('Services', 'fa-solid fa-tags')
+            ->setSubItems([
                 MenuItem::linkToCrud('Categories', null, CategoryGroup::class),
                 MenuItem::linkToCrud('Services', null, Service::class),
-            ]),
-            MenuItem::linkToCrud('News', 'fa-solid fa-newspaper', News::class),
-            MenuItem::subMenu('Albums photos', 'fa-solid fa-tags')->setSubItems([
+            ]);
+        yield MenuItem::linkToCrud('News', 'fa-solid fa-newspaper', News::class);
+        yield MenuItem::subMenu('Albums photos', 'fa-solid fa-tags')
+            ->setSubItems([
                 MenuItem::linkToCrud('Albums', 'fa-solid fa-images', Album::class),
                 MenuItem::linkToCrud('Photos', 'fa-regular fa-image', Image::class),
-            ]),
-            MenuItem::linkToCrud('Reseaux Sociaux', 'fa-solid fa-newspaper', SocialNetwork::class),
-            MenuItem::linkToCrud('Messages', 'fa-solid fa-envelope', Message::class),
-            MenuItem::linkToCrud('Configuration', 'fa-solid fa-cog', Setup::class)->setAction('edit')->setEntityId($this->setupId),
-        ];
+            ]);
+        yield MenuItem::linkToCrud('Reseaux Sociaux', 'fa-solid fa-newspaper', SocialNetwork::class);
+        yield MenuItem::linkToCrud('Messages', 'fa-solid fa-envelope', Message::class);
+        if ($this->manager->getRepository(SectionManager::class)->findOneBy(['name'=> 'hero'])->isActive())
+            yield MenuItem::linkToCrud('Configuration', 'fa-solid fa-cog', Setup::class)->setAction('edit')->setEntityId($this->setupId);
+
         // yield MenuItem::linkToCrud('The Label', 'fas fa-list', EntityClass::class);
     }
 }

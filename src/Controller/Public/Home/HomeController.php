@@ -4,11 +4,13 @@ namespace App\Controller\Public\Home;
 
 use App\Entity\CategoryGroup;
 use App\Entity\News;
+use App\Entity\SectionManager;
 use App\Entity\Setup;
 use App\Repository\CategoryGroupRepository;
 use App\Repository\ImageRepository;
 use App\Repository\NewsRepository;
 use App\Repository\AlbumRepository;
+use App\Repository\SectionManagerRepository;
 use App\Repository\SetupRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -21,9 +23,10 @@ class HomeController extends AbstractController
     public function index(CategoryGroupRepository $categoryGroupRepository,
                           NewsRepository          $newsRepository,
                           ImageRepository         $imageRepository,
-                          SetupRepository $setupRepository): Response
+                          SetupRepository $setupRepository,
+                          SectionManagerRepository $managerRepository): Response
     {
-        $setup = $setupRepository->homeSetup();
+        $managerRepository->findOneBy(['name'=> 'hero'])->isActive() ? $setup = $setupRepository->homeSetup() : $setup = null;
         $servicesByCategoryGroup = $categoryGroupRepository->findAllWithServices();
 
         $s = [];
@@ -35,6 +38,7 @@ class HomeController extends AbstractController
             }
             shuffle($s);
         }
+
         $news = $newsRepository->findFrontNews();
 
         return $this->render('/home/index.html.twig', [
