@@ -21,6 +21,9 @@ class CategoryGroup
     #[ORM\OneToMany(mappedBy: 'category', targetEntity: Service::class)]
     private Collection $services;
 
+    #[ORM\Column]
+    private ?bool $active = false;
+
     public function __construct()
     {
         $this->services = new ArrayCollection();
@@ -74,6 +77,18 @@ class CategoryGroup
                 $service->setCategory(null);
             }
         }
+
+        return $this;
+    }
+
+    public function isActive(): ?bool
+    {
+        return $this->active;
+    }
+
+    public function setActive(bool $active): static
+    {
+        $this->active = $active;
 
         return $this;
     }
