@@ -35,6 +35,17 @@ class SetupRepository extends ServiceEntityRepository
             ->getOneOrNullResult();
     }
 
+    public function serviceSetup()
+    {
+        return $this->createQueryBuilder('s')
+            ->addSelect('s.serviceTitle AS title')
+            ->addSelect('s.serviceHeader AS header')
+            ->addSelect('s.serviceDescription AS description')
+            ->getQuery()
+            ->getOneOrNullResult();
+
+    }
+
     public function countSetups(): ?int
     {
         return $this->createQueryBuilder('s')
