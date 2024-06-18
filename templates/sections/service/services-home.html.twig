@@ -1,9 +1,7 @@
 {% extends '/layouts/home-section.html.twig' %}
-{% set title = "Services" %}
-{% set header = "Je mets à disposition mes services, n'hésitez pas à me contacter." %}
-{% set description = "Fort d'une vaste gamme de compétences et
-                   d'expertises, je vous propose mes services avec enthousiasme. Que ce soit pour répondre à vos besoins professionnels ou personnels,
-                   je suis là pour vous accompagner." %}
+{% set title = serviceSection.title %}
+{% set header = serviceSection.header %}
+{% set description = serviceSection.description %}
 
    {% block id %}services{% endblock %}
  {% block class %} relative {% endblock %}
@@ -17,39 +15,43 @@
            {% endblock %}
            {#        background #}
    {% block content %}
-           {% if servicesByCategoryGroup is not empty %}
-{#               <article class="w-full md:w-3/4 mx-auto my-16">#}
-                   <div class="w-full grid grid-cols-1 md:grid-cols-2 gap-6 mb-24 relative">
+       {% if servicesByCategoryGroup is not empty %}
+           {#               <article class="w-full md:w-3/4 mx-auto my-16"> #}
+           <div class="w-full grid grid-cols-1 md:grid-cols-2 gap-6 mb-24 relative">
                        <span class="hidden md:inline-block absolute bottom-8 right-32 font-black  text-8xl opacity-25 -z-40">
                        <twig:ux:icon name="heroicons:arrow-top-right-on-square"/>
                        </span>
-                       {% for category in servicesByCategoryGroup %}
-                           <!-- Category Card -->
-                           <article class="w-full m-auto bg-light-neutral-light dark:bg-dark-neutral-light border border-dark-neutral/40 dark:border-light-neutral/40 shadow-inner p-4">
-                               <twig:Title:H4
-                                       class="pt-16 relative before:absolute before:-top-1.5 before:left-0 before:bg-dark-neutral before:bg-icon-nurse-white before:bg-[length:50%_50%] before:bg-no-repeat before:bg-center before:content-[''] before:w-12 before:h-12 before:rounded-full">
-                                   {{ category.name }}
-                               </twig:Title:H4>
-                               <ul class="pl-4">
-                                   {% for service in category.services %}
-                                       <li class="relative ">
-                                           <twig:link:Link href="{{ path('app_services', {id: service.id}) }}"
-                                                           class="font-poppins-regular text-base !text-light-text-base dark:!text-dark-text-base hover:font-semibold no-underline hover:underline"> {{ service.name }} </twig:link:Link>
-                                       </li>
-                                   {% endfor %}
-                               </ul>
-                           </article>
-                           <!--  END Category Card -->
-                       {% endfor %}
-                   </div>
+               {% for category in servicesByCategoryGroup %}
+                   <!-- Category Card -->
+                   <article
+                           class="w-full m-auto bg-light-neutral-light dark:bg-dark-neutral-light border border-dark-neutral/40 dark:border-light-neutral/40 shadow-inner p-4">
+                       <twig:Title:H4
+                               class="pt-16 relative before:absolute before:-top-1.5 before:left-0 before:bg-dark-neutral before:bg-icon-nurse-white before:bg-[length:50%_50%] before:bg-no-repeat before:bg-center before:content-[''] before:w-12 before:h-12 before:rounded-full">
+                           {{ category.name }}
+                       </twig:Title:H4>
+                       <ul class="pl-4">
+                           {% for service in category.services %}
+                               <li class="relative ">
+                                   <twig:link:Link href="{{ path('app_services', {id: service.id}) }}"
+                                                   class="font-poppins-regular text-base !text-light-text-base dark:!text-dark-text-base hover:font-semibold no-underline hover:underline"> {{ service.name }} </twig:link:Link>
+                               </li>
+                           {% endfor %}
+                       </ul>
+                   </article>
+                   <!--  END Category Card -->
+               {% endfor %}
+           </div>
 
-{#               </article>#}
-           {% endif %}
+           {#               </article> #}
+       {% endif %}
 
    {% endblock %}
 {% block button_link %}
-    <twig:Button:Primary href="{{ path('app_services') }}"
-                         class="font-poppins-medium bg-light-text-highlight dark:bg-dark-text-highlight">
-        Découvrez les services
-    </twig:Button:Primary>
+
+    {% if app_active_sections.service %}
+        <twig:Button:Primary href="{{ path('app_services') }}"
+                             class="font-poppins-medium bg-light-text-highlight dark:bg-dark-text-highlight">
+            Découvrez les services
+        </twig:Button:Primary>
+    {% endif %}
 {% endblock %}
