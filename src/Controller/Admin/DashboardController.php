@@ -72,11 +72,15 @@ class DashboardController extends AbstractDashboardController
     public function configureMenuItems(): iterable
     {
         yield MenuItem::linkToDashboard('Dashboard', 'fa-solid fa-home');
-        yield MenuItem::subMenu('Services', 'fa-solid fa-tags')
-            ->setSubItems([
-                MenuItem::linkToCrud('Categories', null, CategoryGroup::class),
-                MenuItem::linkToCrud('Services', null, Service::class),
-            ]);
+
+        if ($this->manager->getRepository(SectionManager::class)->findOneBy(['name' => 'service']) &&
+            $this->manager->getRepository(SectionManager::class)->findOneBy(['name' => 'service'])->isActive())
+            yield MenuItem::subMenu('Services', 'fa-solid fa-tags')
+                ->setSubItems([
+                    MenuItem::linkToCrud('Categories', null, CategoryGroup::class),
+                    MenuItem::linkToCrud('Services', null, Service::class),
+                ]);
+
         yield MenuItem::linkToCrud('News', 'fa-solid fa-newspaper', News::class);
         yield MenuItem::subMenu('Albums photos', 'fa-solid fa-tags')
             ->setSubItems([
@@ -85,7 +89,7 @@ class DashboardController extends AbstractDashboardController
             ]);
         yield MenuItem::linkToCrud('Reseaux Sociaux', 'fa-solid fa-newspaper', SocialNetwork::class);
         yield MenuItem::linkToCrud('Messages', 'fa-solid fa-envelope', Message::class);
-        if ($this->manager->getRepository(SectionManager::class)->findOneBy(['name'=> 'hero'])->isActive())
+        if ($this->manager->getRepository(SectionManager::class)->findOneBy(['name' => 'hero'])->isActive())
             yield MenuItem::linkToCrud('Configuration', 'fa-solid fa-cog', Setup::class)->setAction('edit')->setEntityId($this->setupId);
 
         // yield MenuItem::linkToCrud('The Label', 'fas fa-list', EntityClass::class);

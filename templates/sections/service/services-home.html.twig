@@ -6,7 +6,7 @@
                    je suis là pour vous accompagner." %}
 
    {% block id %}services{% endblock %}
-   {% block class %} relative {% endblock %}
+ {% block class %} relative {% endblock %}
            {#            background #}
            {% block background %}
                <svg class="absolute top-8 left-0 text-dark-neutral/10 dark:text-light-neutral/10 h-full -z-10 opacity-50"
@@ -19,7 +19,7 @@
    {% block content %}
            {% if servicesByCategoryGroup is not empty %}
 {#               <article class="w-full md:w-3/4 mx-auto my-16">#}
-                   <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-24 relative">
+                   <div class="w-full grid grid-cols-1 md:grid-cols-2 gap-6 mb-24 relative">
                        <span class="hidden md:inline-block absolute bottom-8 right-32 font-black  text-8xl opacity-25 -z-40">
                        <twig:ux:icon name="heroicons:arrow-top-right-on-square"/>
                        </span>

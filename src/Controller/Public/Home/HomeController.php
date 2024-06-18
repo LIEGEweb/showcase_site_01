@@ -20,29 +20,31 @@ use Symfony\Component\Routing\Annotation\Route;
 class HomeController extends AbstractController
 {
     #[Route('/', name: 'app_home')]
-    public function index(CategoryGroupRepository $categoryGroupRepository,
-                          NewsRepository          $newsRepository,
-                          ImageRepository         $imageRepository,
-                          SetupRepository $setupRepository,
+    public function index(CategoryGroupRepository  $categoryGroupRepository,
+                          NewsRepository           $newsRepository,
+                          ImageRepository          $imageRepository,
+                          SetupRepository          $setupRepository,
                           SectionManagerRepository $managerRepository): Response
     {
-        $managerRepository->findOneBy(['name'=> 'hero'])->isActive() ? $setup = $setupRepository->homeSetup() : $setup = null;
-        $servicesByCategoryGroup = $categoryGroupRepository->findAllWithServices();
-
+        $managerRepository->findOneBy(['name' => 'hero'])->isActive() ? $setup = $setupRepository->homeSetup() : $setup = null;
+        $managerRepository->findOneBy(['name' => 'service'])->isActive() ? $servicesByCategoryGroup =$categoryGroupRepository->findAllWithServices() : $servicesByCategoryGroup = null;
+        $serviceSection = $setupRepository->serviceSetup();
         $s = [];
-        if (!empty($servicesByCategoryGroup)) {
-            foreach ($servicesByCategoryGroup as $category) {
-                foreach ($category->getServices() as $service) {
-                    if (!empty($service->getImage())) $s[] = $service->getImage();
+            if (!empty($servicesByCategoryGroup)) {
+                foreach ($servicesByCategoryGroup as $category) {
+                    foreach ($category->getServices() as $service) {
+                        if (!empty($service->getImage())) $s[] = $service->getImage();
+                    }
                 }
+                shuffle($s);
             }
-            shuffle($s);
-        }
+
 
         $news = $newsRepository->findFrontNews();
 
         return $this->render('/home/index.html.twig', [
             'setup' => $setup,
+            'serviceSection'  => $serviceSection,
             'servicesByCategoryGroup' => $servicesByCategoryGroup,
             "servicesImages" => $s,
             "news" => $news,

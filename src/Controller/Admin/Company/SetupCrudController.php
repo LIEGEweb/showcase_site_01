@@ -27,21 +27,22 @@ class SetupCrudController extends AbstractCrudController
 
     public function configureFields(string $pageName): iterable
     {
-        if ($this->manager->getRepository(SectionManager::class)->findOneBy(['name' => 'hero'])->isActive())
-            return [
+        if ($this->manager->getRepository(SectionManager::class)->findOneBy(['name' => 'hero'])->isActive()) {
+            yield TextField::new('home_headline', 'Accroche')->setColumns(16);
+            yield TextField::new('home_sub_headline', 'Sous-titre')->setColumns(16);
+            yield TextField::new('home_cta_button', 'Action principale');
+            yield TextField::new('home_cta_action', 'Lien action principale');
+            yield TextField::new('home_secondary_button', 'Action secondaire');
+            yield TextField::new('home_secondary_action', 'Lien action secondaire');
+            yield ImageField::new('home_cta_image', 'Image')
+                ->setBasePath('images/home/')
+                ->setUploadDir('public/images/home/');
+            yield TextField::new('home_cta_image_alt');
+        }
+        yield TextField::new('service_title', 'Titre')->setColumns(16);
+        yield TextField::new('service_header', 'Sous-titre')->setColumns(16);
+        yield TextField::new('service_description', 'Description')->setColumns(16);
 
-                TextField::new('home_headline', 'Accroche')->setColumns(16),
-                TextField::new('home_sub_headline', 'Sous-titre')->setColumns(16),
-                TextField::new('home_cta_button', 'Action principale'),
-                TextField::new('home_cta_action', 'Lien action principale'),
-                TextField::new('home_secondary_button', 'Action secondaire'),
-                TextField::new('home_secondary_action', 'Lien action secondaire'),
-                ImageField::new('home_cta_image', 'Image')
-                    ->setBasePath('images/home/')
-                    ->setUploadDir('public/images/home/'),
-                TextField::new('home_cta_image_alt')
-            ];
-        else return [];
     }
 
     public function configureActions(Actions $actions): Actions

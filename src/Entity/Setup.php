@@ -37,6 +37,15 @@ class Setup
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $homeCtaImageAlt = null;
 
+    #[ORM\Column(length: 255)]
+    private ?string $serviceTitle = "Services";
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $serviceHeader = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $serviceDescription = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -134,6 +143,42 @@ class Setup
     public function setHomeSecondaryAction(?string $homeSecondaryAction): static
     {
         $this->homeSecondaryAction = $homeSecondaryAction;
+
+        return $this;
+    }
+
+    public function getServiceTitle(): ?string
+    {
+        return $this->serviceTitle;
+    }
+
+    public function setServiceTitle(string $serviceTitle): static
+    {
+        $this->serviceTitle = $serviceTitle;
+
+        return $this;
+    }
+
+    public function getServiceHeader(): ?string
+    {
+        return $this->serviceHeader;
+    }
+
+    public function setServiceHeader(?string $serviceHeader): static
+    {
+        $this->serviceHeader = $serviceHeader;
+
+        return $this;
+    }
+
+    public function getServiceDescription(): ?string
+    {
+        return $this->serviceDescription;
+    }
+
+    public function setServiceDescription(?string $serviceDescription): static
+    {
+        $this->serviceDescription = $serviceDescription;
 
         return $this;
     }

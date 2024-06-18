@@ -4,17 +4,19 @@
 
 {% block body %}
 
-<div class="w-full space-y-36">
-    {% if setup is not empty %}
-        {% include '/sections/home/hero_stacked.html.twig' %}
-    {% endif %}
-    {% include '/sections/service/services-home.html.twig' %}
-    {% include '/sections/news/news-home.html.twig' %}
-    {% include '/album/albums-home.html.twig' %}
+    <div class="w-full space-y-36">
+        {% if setup is not empty %}
+            {% include '/sections/home/hero_stacked.html.twig' %}
+        {% endif %}
 
-{#        {% include '/sections/album/albums-home.html.twig' %}#}
+        {% include '/sections/service/services-home.html.twig'  %}
 
-     {% include '/sections/social-networks/home.html.twig' %}
-</div>
+        {% include '/sections/news/news-home.html.twig' %}
+        {% include '/album/albums-home.html.twig' %}
+
+        {#        {% include '/sections/album/albums-home.html.twig' %} #}
+
+        {% include '/sections/social-networks/home.html.twig' %}
+    </div>
 
 {% endblock %}
