@@ -4,11 +4,10 @@ twig:
 #        '%kernel.project_dir%/templates/themes/%env(APP_THEME)%/components': components
     form_themes: ['tailwind_2_layout.html.twig']
     globals:
-        app_theme: '%env(APP_THEME)%'
         app_album_section: '%env(APP_ALBUM_SECTION)%'
         app_socials: '@App\Service\GlobalSocialNetworks'
         app_company_infos: '@App\Dto\GlobalCompanyInfos'
-
+        app_active_sections: '@App\Dto\GlobalActiveSections'
 when@test:
     twig:
         strict_variables: true
