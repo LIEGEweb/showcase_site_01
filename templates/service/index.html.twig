@@ -1,0 +1,38 @@
+{# {% extends '/layouts/page-layout.html.twig' %} #}
+{% extends 'base.html.twig' %}
+
+{#        {% block page_title %} #}
+{#            <twig:Title:H1>Services proposés</twig:Title:H1> #}
+{#        {% endblock %} #}
+
+{% block title %}Services{% endblock %}
+
+{% block body %}
+    <div class="p-8">
+        <twig:Title:H1 class="mb-24">Services proposés</twig:Title:H1>
+
+        <div class="space-y-16 md:space-y-36">
+            {% for service in services %}
+                {{ component('Card:ServiceCard', {
+                    label: service.name ,
+                    content: service.description,
+                    image: service.image,
+                    alt: service.name,
+                    subtitle: service.category.name
+                }) }}
+            {% endfor %}
+        </div>
+        {#        <div {{ stimulus_controller('collection') }}> #}
+        {#            <div class="lg:hidden" {{ stimulus_target('collection', 'mobile') }}> #}
+        {#                {% include '/sections/service/services-page.html.twig' with { #}
+        {#                    'items': services #}
+        {#                } %} #}
+        {#            </div> #}
+        {#            <div class="hidden lg:block" {{ stimulus_target('collection', 'desktop') }}> #}
+        {#                {% include '/sections/service/services-page-lg.html.twig' with { #}
+        {#                    'items': services #}
+        {#                } %} #}
+        {#            </div> #}
+        {#        </div> #}
+    </div>
+{% endblock %}
