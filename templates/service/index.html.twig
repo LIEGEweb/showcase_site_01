@@ -1,4 +1,4 @@
-{# {% extends '/layouts/page-layout.html.twig' %} #}
+{# {% extends '/layouts/page-layout.html.twig' %}#}
 {% extends 'base.html.twig' %}
 
 {#        {% block page_title %} #}
@@ -8,12 +8,12 @@
 {% block title %}Services{% endblock %}
 
 {% block body %}
-    <div class="p-8">
+    <section class=" p-8 my-16 ">
         <twig:Title:H1 class="mb-24">Services proposés</twig:Title:H1>
 
         <div class="space-y-16 md:space-y-36">
             {% for service in services %}
-                {{ component('Card:ServiceCard', {
+                {{ component('Card:Service', {
                     label: service.name ,
                     content: service.description,
                     image: service.image,
@@ -34,5 +34,5 @@
         {#                } %} #}
         {#            </div> #}
         {#        </div> #}
-    </div>
+    </section>
 {% endblock %}

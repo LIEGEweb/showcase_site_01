@@ -37,7 +37,7 @@
 {% endif %}
 {% include '_parts/_header.html.twig' with {routes: pages} %}
 
-<main class="flex flex-col justify-between h-full w-full md:max-w-6xl md:max-w-7xl shadow shadow-md shadow-dark-neutral-light/30 dark:shadow-light-neutral/30 m-auto ">
+<main class="flex flex-col justify-between h-full w-full md:max-w-6xl md:max-w-7xl shadow shadow-md shadow-dark-neutral-light/30 dark:shadow-light-neutral/30 m-auto relative">
     {% for message in app.flashes('success') %}
     <div class="w-full bg-primary/10 text-primary py-6 px-3">
 {{ message }}
