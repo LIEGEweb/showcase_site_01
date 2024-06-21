@@ -1,4 +1,4 @@
-{% extends 'themes/'~app_theme~'/layouts/home-section.html.twig' %}
+{% extends '/layouts/home-section.html.twig' %}
 
    {% block class %} !py-6 !px-0 {% endblock %}
    {% block id %} hero {% endblock %}
@@ -6,10 +6,11 @@
 
    {% block content %}
        <div class="w-full p-0 flex relative ">
-           <div class="w-full  h-20 absolute top-0 left-0  bg-gradient-to-b from-white to-white/0 dark:from-black dark:to-black/0 block"> </div>
-           <div class="w-full  h-20 absolute bottom-0 left-0  bg-gradient-to-b from-white/0 to-white dark:from-black/0 dark:to-black block"> </div>
-           <div class="absolute w-11/12 top-1/2 -translate-y-1/2 left-1/2 md:left-9 -translate-x-1/2  md:translate-x-0  px-4 py-8 backdrop-blur-sm bg-white/30 md:w-1/2 md:left-4 rounded-md">
-               <twig:Title:H1 class="!mx-0">{{ setup.headline }}</twig:Title:H1>
+           <div class="w-full  h-20 absolute top-0 left-0  bg-gradient-to-b from-light-neutral via-light-neutral/50 to-light-neutral/0 dark:from-black-neutral dark:to-black-neutral/0 block"> </div>
+           <div class="w-full  h-20 absolute bottom-0 left-0  bg-gradient-to-b from-light-neutral/0 to-light-neutral dark:from-black-neutral/0 dark:to-black-neutral block"> </div>
+           <div class="absolute w-11/12 top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 px-4 py-8 backdrop-blur-sm bg-light-neutral/50 dark:bg-dark-neutral/40 rounded-md">
+               <twig:Title:H1 class="!dark:dark-text-base ">{{ setup.headline }}</twig:Title:H1>
+               <h1 class="light-text-highlight">{{ setup.headline }}</h1>
                <div class="flex justify-start items-end">
                    <twig:Button:Primary  href="{{ path('app_contact') }}" class="!mb-0 mr-6" >Je contacte</twig:Button:Primary>
                </div>
