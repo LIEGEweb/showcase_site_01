@@ -4,8 +4,8 @@ namespace App\Components\Card;
 
 use Symfony\UX\TwigComponent\Attribute\AsTwigComponent;
 
-#[AsTwigComponent (template: 'themes/%env(APP_THEME)%/components/card/Service-card.html.twig')]
-class ServiceCard
+#[AsTwigComponent (template: 'components/card/Service.html.twig')]
+class Service
 {
     public function __construct(public ?string $label = "",
                                 public ?string $subtitle = "",

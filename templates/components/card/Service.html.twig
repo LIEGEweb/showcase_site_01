@@ -1,0 +1,17 @@
+<article class="min-h-[40dvh] my-[30dvh] flex flex-col justify-center  first:-mt-12 space-y-12">
+    <div class="w-full md:w-2/3 py-12 mx-auto flex flex-col md:grid md:grid-cols-2 space-y-6 md:space-y-0 md:space-x-12">
+        <div class="flex flex-col justify-center items-start">
+            <twig:Title:H2>{{ label }}</twig:Title:H2>
+            <twig:Title:H3>{{ subtitle }}</twig:Title:H3>
+        </div>
+        <div class="leading-loose pt-6 text-base font-semibold flex items-center">{{ content | raw }}</div>
+    </div>
+    <figure>
+        {% if image is not empty %}
+            <img {{ attributes.defaults({ class:'w-full md:w-1/2 mx-auto  rounded-md shadow-md'}) }}
+                    src="/images/services/{{ image }}"
+                    alt="{{ alt }}"
+            />
+        {% endif %}
+    </figure>
+</article>
