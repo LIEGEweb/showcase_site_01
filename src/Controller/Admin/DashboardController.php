@@ -3,6 +3,7 @@
 namespace App\Controller\Admin;
 
 use App\Controller\Admin\Company\CompanyCrudController;
+use App\Dto\GlobalActiveSections;
 use App\Entity\CategoryGroup;
 use App\Entity\Message;
 use App\Entity\News;
@@ -27,7 +28,7 @@ class DashboardController extends AbstractDashboardController
 
     private ?int $setupId = null;
 
-    public function __construct(private EntityManagerInterface $manager)
+    public function __construct(private EntityManagerInterface $manager, private GlobalActiveSections $activeSections)
     {
         if (count($this->manager->getRepository(Setup::class)->findAll()) === 0) {
             $setup = new Setup();
@@ -82,11 +83,15 @@ class DashboardController extends AbstractDashboardController
                 ]);
 
         yield MenuItem::linkToCrud('News', 'fa-solid fa-newspaper', News::class);
-        yield MenuItem::subMenu('Albums photos', 'fa-solid fa-tags')
-            ->setSubItems([
-                MenuItem::linkToCrud('Albums', 'fa-solid fa-images', Album::class),
-                MenuItem::linkToCrud('Photos', 'fa-regular fa-image', Image::class),
-            ]);
+        if ($this->activeSections->photo())
+            yield MenuItem::subMenu('Albums photos', 'fa-solid fa-tags')
+                ->setSubItems([
+                    MenuItem::linkToCrud('Albums', 'fa-solid fa-images', Album::class),
+                    MenuItem::linkToCrud('Photos', 'fa-regular fa-image', Image::class),
+                ]);
+        else
+            yield MenuItem::linkToCrud('Photos', 'fa-regular fa-image', Image::class);
+
         yield MenuItem::linkToCrud('Reseaux Sociaux', 'fa-solid fa-newspaper', SocialNetwork::class);
         yield MenuItem::linkToCrud('Messages', 'fa-solid fa-envelope', Message::class);
         if ($this->manager->getRepository(SectionManager::class)->findOneBy(['name' => 'hero'])->isActive())
