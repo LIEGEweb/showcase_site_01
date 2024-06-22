@@ -47,4 +47,13 @@ class GlobalActiveSections
     {
         return $this->initializeInfos('service');
     }
+    public function photo()
+    {
+        return $this->initializeInfos('photo');
+    }
+    public function photoLanding()
+    {
+        return $this->initializeInfos('photo_landing');
+    }
+
 }
