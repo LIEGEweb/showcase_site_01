@@ -28,7 +28,7 @@ class AlbumRepository extends ServiceEntityRepository
      */
     public function findAllWithFirstImage(): array
     {
-        $subQueryBuilder = $this->_em->createQueryBuilder()
+/*        $subQueryBuilder = $this->_em->createQueryBuilder()
             ->select('MIN(i2.id)')
             ->from(Image::class, 'i2')
             ->where('i2.album = a.id')
@@ -43,6 +43,16 @@ class AlbumRepository extends ServiceEntityRepository
             ->addSelect('i')
             ->andWhere('i.id = (' . $subQueryBuilder->getDQL() . ')')
             ->setParameter('published', true)
+            ->getQuery()
+            ->getResult();*/
+
+        return $this->createQueryBuilder('a')
+            ->innerJoin('a.images', 'i')
+            ->andWhere('a.published = :published')
+            ->setParameter('published', true)
+            ->addSelect('i')
+            ->andWhere('i.published = :imagepublished')
+            ->setParameter('imagepublished', true)
             ->getQuery()
             ->getResult();
     }
