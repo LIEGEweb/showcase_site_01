@@ -19,9 +19,8 @@ class AlbumController extends AbstractController
     #[Route('/albums', name: 'app_albums_index')]
     public function index(ImageRepository $imageRepository): Response
     {
-        return $this->render('themes/' . $this->getParameter('app.theme') . '/album/index.html.twig', [
+        return $this->render('/album/index.html.twig', [
             'albums' => $this->albumRepository->findAllWithFirstImage(),
-            'image' => $imageRepository->findRandomOne(),
         ]);
     }
 
@@ -30,7 +29,7 @@ class AlbumController extends AbstractController
     {
         $album = $this->albumRepository->findOneBySlug($slug);
 
-        return $this->render('themes/' . $this->getParameter('app.theme') . '/album/show.html.twig', [
+        return $this->render('/album/show.html.twig', [
             'album' => $album,
         ]);
     }

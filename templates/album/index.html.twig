@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} {{ app_album_section }} {% endblock %}
+{% block page_title %}
+    <twig:Title:H1>{{ app_album_section }}</twig:Title:H1>
+{% endblock %}
+
+{% block body %}
+    <div class="w-full  grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 my-16  bg-secondary/10 ">
+        {% for album in albums %}
+            <twig:card:Image fileName="{{ album.images[0].fileName }}"
+                             alt="{{ album.name }}"
+                             album_name="{{ album.name }}"
+                             slug="{{ album.slug }}"/>
+
+        {% endfor %}
+    </div>
+{% endblock %}
