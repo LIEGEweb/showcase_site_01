@@ -29,16 +29,6 @@ class HomeController extends AbstractController
         $managerRepository->findOneBy(['name' => 'hero'])->isActive() ? $setup = $setupRepository->homeSetup() : $setup = null;
         $managerRepository->findOneBy(['name' => 'service'])->isActive() ? $servicesByCategoryGroup =$categoryGroupRepository->findAllWithServices() : $servicesByCategoryGroup = null;
         $serviceSection = $setupRepository->serviceSetup();
-        $s = [];
-            if (!empty($servicesByCategoryGroup)) {
-                foreach ($servicesByCategoryGroup as $category) {
-                    foreach ($category->getServices() as $service) {
-                        if (!empty($service->getImage())) $s[] = $service->getImage();
-                    }
-                }
-                shuffle($s);
-            }
-
 
         $news = $newsRepository->findFrontNews();
 
@@ -46,9 +36,8 @@ class HomeController extends AbstractController
             'setup' => $setup,
             'serviceSection'  => $serviceSection,
             'servicesByCategoryGroup' => $servicesByCategoryGroup,
-            "servicesImages" => $s,
             "news" => $news,
-            'images_from_albums' => $imageRepository->findPinned()
+            'images' => $imageRepository->findPinned()
         ]);
     }
 }

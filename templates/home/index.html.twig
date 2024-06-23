@@ -8,12 +8,12 @@
             {% include '/sections/home/hero_stacked.html.twig' %}
         {% endif %}
 
-        {% include '/sections/service/services-home.html.twig'  %}
+        {% include '/sections/service/services-home.html.twig' %}
 
         {% include '/sections/news/news-home.html.twig' %}
-        {% include '/album/albums-home.html.twig' %}
-
-        {#        {% include '/sections/album/albums-home.html.twig' %} #}
+        {% if (app_active_sections.photo or app_active_sections.photoLanding) %}
+            {% include '/album/albums-home.html.twig' %}
+        {% endif %}
 
         {% include '/sections/social-networks/home.html.twig' %}
     </div>

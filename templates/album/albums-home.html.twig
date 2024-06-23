@@ -8,34 +8,38 @@
  {% block class %} relative {% endblock %}
         {#            background #}
        {% block background %}
-           <svg class="absolute top-8 left-0 text-dark-neutral/10 dark:text-light-neutral/10 h-full -z-10 opacity-50"
+           <svg class="absolute top-0 left-0 text-dark-neutral/10 dark:text-light-neutral/10 h-full -z-10 opacity-50"
                 viewBox="0 0 450 797"
                 fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                <path d="M449.5 448C460 714.5 257.884 790 135.001 790C86.4987 786 80 787.5 54.9987 787.5C-231.501 847.5 -73.9997 600.997 -73.9997 381.003C-75.2218 94.3933 -75.4999 43.0063 133.5 5.00253C342.501 -33.0012 449.5 196.71 449.5 448Z"/>
            </svg>
        {% endblock %}
-       {#        background #}
+       {#      end  background #}
 {% block content %}
-{#    <div class="w-full relative">#}
+    <div class="w-full  grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 my-16  bg-secondary/10 ">
 
-
-        <div class="w-full  grid grid-cols-2 md:grid-cols-3 gap-5 my-16  bg-secondary/10 ">
-
-            {% for image in images_from_albums %}
-                {{ component('Card:ImageHomeCard', {
-                    fileName: image.fileName,
-                    loop_index: loop.index,
-                    album_name: image.album.name,
-                    album_slug: image.album.slug,
-                }) }}
+        {% if (app_active_sections.photo) %}
+            {% for image in images %}
+                <twig:card:Image fileName="{{ image.fileName }}"
+                                 alt="{{ image.album.name }}"
+                                 album_name="{{ image.album.name }}"
+                                 slug="{{ image.album.slug }}"/>
 
             {% endfor %}
-        </div>
+        {% else %}
+            {% for image in images %}
+                <twig:card:Image fileName="{{ image.fileName }}"
+                                 alt="{{ image.alt }}"/>
+            {% endfor %}
+        {% endif %}
+    </div>
 {% endblock %}
 
 {% block button_link %}
-    <twig:Button:Primary href="{{ path('app_albums_index') }}"
-                         class="font-poppins-medium bg-light-text-highlight dark:bg-dark-text-highlight">
-        Les Photos
-    </twig:Button:Primary>
+    {% if (app_active_sections.photo) %}
+        <twig:Button:Primary href="{{ path('app_albums_index') }}"
+                             class="font-poppins-medium bg-light-text-highlight dark:bg-dark-text-highlight">
+            Les Photos
+        </twig:Button:Primary>
+    {% endif %}
 {% endblock %}
