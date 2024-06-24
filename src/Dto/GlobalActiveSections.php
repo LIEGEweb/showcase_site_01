@@ -8,52 +8,39 @@ use App\Repository\SectionManagerRepository;
 
 class GlobalActiveSections
 {
-
-    private array $sections = [];
-
-    public function __construct(private SectionManagerRepository $manager)
+    public function __construct(private SectionManagerRepository $manager, private array $sections = [])
     {
     }
 
-    private function initializeInfos(string $field): bool
+    private function getFieldStatu(string $field): bool
     {
-        if (in_array($field, $this->sections))
+        if (array_key_exists($field, $this->sections)) {
             return $this->sections[$field];
+        }
 
         if ($section = $this->manager->findOneBy(['name' => $field])) {
             $this->sections[$field] = $section->isActive();
             return $section->isActive();
+        } else {
+            return false;
         }
-
-        return false;
     }
 
     public function hero()
     {
-
-        return $this->initializeInfos('hero');
-//        if (in_array('hero', $this->sections))
-//            return $this->sections['hero'];
-//
-//        if ($section = $this->manager->findOneBy(['name' => 'hero'])) {
-//            $this->sections['hero'] = $section->isActive();
-//            return $section->isActive();
-//        }
-//
-//        return null;
+        return $this->getFieldStatu('hero');
     }
 
     public function service()
     {
-        return $this->initializeInfos('service');
+        return $this->getFieldStatu('service');
     }
     public function photo()
     {
-        return $this->initializeInfos('photo');
+        return $this->getFieldStatu('photo');
     }
     public function photoLanding()
     {
-        return $this->initializeInfos('photo_landing');
+        return $this->getFieldStatu('photo_landing');
     }
-
 }
