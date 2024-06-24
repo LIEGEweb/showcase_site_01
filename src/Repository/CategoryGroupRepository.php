@@ -36,6 +36,16 @@ class CategoryGroupRepository extends ServiceEntityRepository
         ;
     }
 
+    public function getAll(): array
+    {
+        return $this->createQueryBuilder('c')
+            ->orderBy('c.name', 'ASC')
+//            ->setMaxResults(10)
+            ->getQuery()
+            ->getResult()
+            ;
+    }
+
 //    /**
 //     * @return CategoryGroup[] Returns an array of CategoryGroup objects
 //     */

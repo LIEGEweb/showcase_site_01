@@ -46,6 +46,9 @@ class Setup
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $serviceDescription = null;
 
+    #[ORM\OneToOne(cascade: ['persist', 'remove'])]
+    private ?SectionHeader $albumHeader = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -179,6 +182,18 @@ class Setup
     public function setServiceDescription(?string $serviceDescription): static
     {
         $this->serviceDescription = $serviceDescription;
+
+        return $this;
+    }
+
+    public function getAlbumHeader(): ?SectionHeader
+    {
+        return $this->albumHeader;
+    }
+
+    public function setAlbumHeader(?SectionHeader $albumHeader): static
+    {
+        $this->albumHeader = $albumHeader;
 
         return $this;
     }

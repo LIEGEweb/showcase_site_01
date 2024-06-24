@@ -24,6 +24,7 @@ class SetupRepository extends ServiceEntityRepository
     public function homeSetup()
     {
         return $this->createQueryBuilder('s')
+            ->leftJoin('s.albumHeader', 'ah')
             ->addSelect('s.homeHeadline AS headline')
             ->addSelect('s.homeSubHeadline AS sub_headline')
             ->addSelect('s.homeCtaButton AS cta_button')
@@ -31,6 +32,7 @@ class SetupRepository extends ServiceEntityRepository
             ->addSelect('s.homeSecondaryButton AS secondary_button')
             ->addSelect('s.homeCtaImage AS cta_image')
             ->addSelect('s.homeCtaImageAlt AS cta_image_alt')
+            ->addSelect('ah AS album_header')
             ->getQuery()
             ->getOneOrNullResult();
     }

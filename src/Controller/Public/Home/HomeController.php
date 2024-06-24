@@ -29,6 +29,7 @@ class HomeController extends AbstractController
         $managerRepository->findOneBy(['name' => 'hero'])->isActive() ? $setup = $setupRepository->homeSetup() : $setup = null;
         $managerRepository->findOneBy(['name' => 'service'])->isActive() ? $servicesByCategoryGroup =$categoryGroupRepository->findAllWithServices() : $servicesByCategoryGroup = null;
         $serviceSection = $setupRepository->serviceSetup();
+        $homeSetup = $setupRepository->homeSetup()[0];
 
         $news = $newsRepository->findFrontNews();
 
@@ -37,6 +38,7 @@ class HomeController extends AbstractController
             'serviceSection'  => $serviceSection,
             'servicesByCategoryGroup' => $servicesByCategoryGroup,
             "news" => $news,
+            "album_header" => $homeSetup->getAlbumHeader(),
             'images' => $imageRepository->findPinned()
         ]);
     }

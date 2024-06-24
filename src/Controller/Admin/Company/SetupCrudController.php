@@ -2,6 +2,7 @@
 
 namespace App\Controller\Admin\Company;
 
+use App\Dto\GlobalActiveSections;
 use App\Entity\SectionManager;
 use App\Entity\Setup;
 use App\Repository\SetupRepository;
@@ -10,12 +11,13 @@ use EasyCorp\Bundle\EasyAdminBundle\Config\Action;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Actions;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
+use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ImageField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 
 class SetupCrudController extends AbstractCrudController
 {
-    public function __construct(private EntityManagerInterface $manager)
+    public function __construct(private EntityManagerInterface $manager, private GlobalActiveSections $activeSections)
     {
     }
 
@@ -42,7 +44,19 @@ class SetupCrudController extends AbstractCrudController
         yield TextField::new('service_title', 'Titre')->setColumns(16);
         yield TextField::new('service_header', 'Sous-titre')->setColumns(16);
         yield TextField::new('service_description', 'Description')->setColumns(16);
-
+        if ($this->activeSections->photoLanding()){
+            yield AssociationField::new('albumHeader', 'Entête photos')
+                ->addCssClass('font-black pl-12')
+                ->renderAsEmbeddedForm()
+                ->setColumns('w-full');
+//            yield TextField::new('album_header', 'Titre');
+//            yield AssociationField::new('albumHeader', 'Section Header')
+//                ->autocomplete()
+//                ->hideOnForm();
+//
+//            yield TextField::new('albumHeader.title', 'Titre')
+//                ->onlyOnForms();
+        }
     }
 
     public function configureActions(Actions $actions): Actions
