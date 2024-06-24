@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr_BE">
+<html lang="fr_BE" class="w-screen">
 <head>
     <meta charset="UTF-8">
     <title>{% block title %}Welcome!{% endblock %}</title>
@@ -25,22 +25,26 @@
     {% endblock %}
 
 </head>
-<body class="w-full min-h-screen font-poppins-regular bg-light-neutral text-light-text-base dark:bg-dark-neutral dark:text-dark-text-base{% block body_class %} {% endblock %} ">
+<body class="w-screen min-h-screen font-poppins-regular bg-light-neutral text-light-text-base dark:bg-dark-neutral dark:text-dark-text-base{% block body_class %} {% endblock %} ">
 {% block body_background %} {% endblock %}
 {% set pages = {
     'app_home': 'Accueil',
-    'app_news': 'News',
-    'app_albums_index': 'Photos'
 } %}
-{% if app_active_sections.service %}
+{% if app_active_sections.service is defined and app_active_sections.service %}
     {% set pages = pages|merge({'app_services': 'Services'}) %}
+{% endif %}
+{% if app_active_sections.photo is defined and app_active_sections.photo %}
+    {% set pages = pages|merge({'app_albums_index': 'Photos'}) %}
+{% endif %}
+{% if app_active_sections.news is defined and app_active_sections.news %}
+    {% set pages = pages|merge({'app_news': 'News'}) %}
 {% endif %}
 {% include '_parts/_header.html.twig' with {routes: pages} %}
 
 <main class="flex flex-col justify-between h-full w-full md:max-w-6xl md:max-w-7xl shadow shadow-md shadow-dark-neutral-light/30 dark:shadow-light-neutral/30 m-auto relative">
     {% for message in app.flashes('success') %}
-    <div class="w-full bg-primary/10 text-primary py-6 px-3">
-{{ message }}
+        <div class="w-full bg-primary/10 text-primary py-6 px-3">
+            {{ message }}
         </div>
     {% endfor %}
     <div class="w-full p-0 m-0">
