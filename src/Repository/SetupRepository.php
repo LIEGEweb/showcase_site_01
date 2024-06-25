@@ -30,6 +30,7 @@ class SetupRepository extends ServiceEntityRepository
             ->addSelect('s.homeCtaButton AS cta_button')
             ->addSelect('s.homeCtaAction AS cta_action')
             ->addSelect('s.homeSecondaryButton AS secondary_button')
+            ->addSelect('s.homeSecondaryAction AS secondary_action')
             ->addSelect('s.homeCtaImage AS cta_image')
             ->addSelect('s.homeCtaImageAlt AS cta_image_alt')
             ->addSelect('ah AS album_header')
