@@ -37,7 +37,7 @@ class Setup
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $homeCtaImageAlt = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(length: 255, nullable: true)]
     private ?string $serviceTitle = "Services";
 
     #[ORM\Column(length: 255, nullable: true)]
@@ -155,7 +155,7 @@ class Setup
         return $this->serviceTitle;
     }
 
-    public function setServiceTitle(string $serviceTitle): static
+    public function setServiceTitle(?string $serviceTitle): static
     {
         $this->serviceTitle = $serviceTitle;
 
