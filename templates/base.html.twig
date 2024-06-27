@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr_BE" class="w-screen">
+<html lang="fr_BE" class="">
 <head>
     <meta charset="UTF-8">
     <title>{% block title %}Welcome!{% endblock %}</title>
@@ -25,7 +25,7 @@
     {% endblock %}
 
 </head>
-<body class="w-screen min-h-screen font-poppins-regular bg-light-neutral text-light-text-base dark:bg-dark-neutral dark:text-dark-text-base{% block body_class %} {% endblock %} ">
+<body class="w-full min-h-screen  overflow-x-hidden font-poppins-regular bg-light-neutral text-light-text-base dark:bg-dark-neutral dark:text-dark-text-base{% block body_class %} {% endblock %} ">
 {% block body_background %} {% endblock %}
 {% set pages = {
     'app_home': 'Accueil',
