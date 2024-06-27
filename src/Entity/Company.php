@@ -16,7 +16,7 @@ class Company
     #[ORM\Column(length: 100, nullable: true)]
     private ?string $name = null;
 
-    #[ORM\Column(length: 14)]
+    #[ORM\Column(length: 14, nullable: true)]
     private ?string $vat = null;
 
     #[ORM\Column(length: 10, nullable: true)]
