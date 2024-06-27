@@ -49,13 +49,12 @@ class SetupCrudController extends AbstractCrudController
                 ->addCssClass('font-black pl-12')
                 ->renderAsEmbeddedForm()
                 ->setColumns('w-full');
-//            yield TextField::new('album_header', 'Titre');
-//            yield AssociationField::new('albumHeader', 'Section Header')
-//                ->autocomplete()
-//                ->hideOnForm();
-//
-//            yield TextField::new('albumHeader.title', 'Titre')
-//                ->onlyOnForms();
+        }
+        if ($this->activeSections->social()){
+            yield AssociationField::new('socialHeader', 'Reseaux Sociaux')
+                ->addCssClass('font-black pl-12')
+                ->renderAsEmbeddedForm()
+                ->setColumns('w-full');
         }
     }
 

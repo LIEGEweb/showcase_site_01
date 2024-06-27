@@ -49,6 +49,9 @@ class Setup
     #[ORM\OneToOne(cascade: ['persist', 'remove'])]
     private ?SectionHeader $albumHeader = null;
 
+    #[ORM\OneToOne(cascade: ['persist', 'remove'])]
+    private ?SectionHeader $socialHeader = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -194,6 +197,18 @@ class Setup
     public function setAlbumHeader(?SectionHeader $albumHeader): static
     {
         $this->albumHeader = $albumHeader;
+
+        return $this;
+    }
+
+    public function getSocialHeader(): ?SectionHeader
+    {
+        return $this->socialHeader;
+    }
+
+    public function setSocialHeader(?SectionHeader $socialHeader): static
+    {
+        $this->socialHeader = $socialHeader;
 
         return $this;
     }

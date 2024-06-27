@@ -43,4 +43,8 @@ class GlobalActiveSections
     {
         return $this->getFieldStatu('photo_landing');
     }
+    public function social()
+    {
+        return $this->getFieldStatu('social');
+    }
 }

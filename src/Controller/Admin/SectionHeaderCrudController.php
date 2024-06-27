@@ -20,8 +20,12 @@ class SectionHeaderCrudController extends AbstractCrudController
     {
         return [
             TextField::new('title', 'Titre principal'),
-            TextField::new('header', 'Sous-titre')->setColumns('w-full'),
-            TextField::new('description', 'Description')->setColumns('w-full'),
+            TextField::new('header', 'Sous-titre')
+                ->setFormTypeOption('attr', ['maxlength' => 255])
+                ->setColumns('w-full'),
+            TextField::new('description', 'Description')
+                ->setFormTypeOption('attr', ['maxlength' => 255])
+                ->setColumns('w-full'),
         ];
     }
 

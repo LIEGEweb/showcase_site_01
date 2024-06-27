@@ -39,6 +39,7 @@ class HomeController extends AbstractController
             'servicesByCategoryGroup' => $servicesByCategoryGroup,
             "news" => $news,
             "album_header" => $homeSetup->getAlbumHeader(),
+            "social_header" => $homeSetup->getSocialHeader(),
             'images' => $imageRepository->findPinned()
         ]);
     }
