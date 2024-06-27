@@ -17,7 +17,7 @@
        {% endblock %}
        {#      end  background #}
 {% block content %}
-    <div class="w-full  grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 my-16  bg-secondary/10 ">
+    <div class="w-full grid grid-cols-1  {% if images  | length >= 3 %}lg:grid-cols-3 {% else %} lg:grid-cols-2 {% endif%} gap-5 my-16  bg-secondary/10 ">
 
         {% if app_active_sections.photo is defined and app_active_sections.photo %}
             {% for image in images %}
