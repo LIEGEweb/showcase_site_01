@@ -21,7 +21,7 @@
 
         {% if app_active_sections.photo is defined and app_active_sections.photo %}
             {% for image in images %}
-                <twig:card:Image fileName="{{ image.fileName }}"
+                <twig:Card:Image fileName="{{ image.fileName }}"
                                  alt="{{ image.album.name }}"
                                  album_name="{{ image.album.name }}"
                                  slug="{{ image.album.slug }}"/>
@@ -29,7 +29,7 @@
             {% endfor %}
         {% else %}
             {% for image in images %}
-                <twig:card:Image fileName="{{ image.fileName }}"
+                <twig:Card:Image fileName="{{ image.fileName }}"
                                  alt="{{ image.alt }}"/>
             {% endfor %}
         {% endif %}
