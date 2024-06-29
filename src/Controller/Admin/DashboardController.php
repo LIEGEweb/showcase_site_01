@@ -89,7 +89,7 @@ class DashboardController extends AbstractDashboardController
                     MenuItem::linkToCrud('Albums', 'fa-solid fa-images', Album::class),
                     MenuItem::linkToCrud('Photos', 'fa-regular fa-image', Image::class),
                 ]);
-        else
+        elseif($this->activeSections->photoLanding())
             yield MenuItem::linkToCrud('Photos', 'fa-regular fa-image', Image::class);
 
         yield MenuItem::linkToCrud('Reseaux Sociaux', 'fa-solid fa-newspaper', SocialNetwork::class);
