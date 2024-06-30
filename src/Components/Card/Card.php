@@ -4,7 +4,7 @@ namespace App\Components\Card;
 
 use Symfony\UX\TwigComponent\Attribute\AsTwigComponent;
 
-#[AsTwigComponent (template: 'themes/%env(APP_THEME)%/components/card/Card.html.twig')]
+#[AsTwigComponent (template: 'components/card/Card.html.twig')]
 class Card
 {
     public function __construct(public ?string $label = "",
