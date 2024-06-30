@@ -3,12 +3,29 @@
 {% block title %}Landing page {% endblock %}
 
 {% block body %}
+    {#        {{ dump(setup) }} #}
     <div class="w-full space-y-8">
         {% if setup is not empty %}
-            {% include '/sections/home/hero_stacked.html.twig' %}
+            {% include '/sections/home/hero_stacked.html.twig' with {
+                'headline': setup.homeHeadline ?: '',
+                'sub_headline': setup.homeSubHeadline ?: '',
+                'cta_button': setup.homeCtaButton ?: '',
+                'cta_action': setup.homeCtaAction ?: '',
+                'secondary_button': setup.homeSecondaryButton ?: '',
+                'secondary_action': setup.homeSecondaryAction ?: '',
+                'cta_image': setup.homeCtaImage ?: '',
+                'cta_image_alt': setup.homeCtaImageAlt ?: '',
+            } only %}
         {% endif %}
 
-        {% include '/service/services-home.html.twig' %}
+        {% include '/service/services-home.html.twig' with {
+            'title': setup.serviceTitle ?: '',
+            'header': setup.serviceHeader ?: '',
+            'description': setup.serviceDescription ?: '',
+            'servicesByCategoryGroup': servicesByCategoryGroup ?: '',
+        } only %}
+
+        {#        {% include '/contact/home.html.twig' %} #}
 
         {% if (app_active_sections.news is defined and app_active_sections.news) %}
             {% include '/sections/news/news-home.html.twig' %}
@@ -17,10 +34,20 @@
         {% if (app_active_sections.photo is defined and app_active_sections.photo)
             or
             (app_active_sections.photoLanding is defined and app_active_sections.photoLanding) %}
-            {% include '/album/albums-home.html.twig' %}
+            {% include '/album/albums-home.html.twig' with {
+                'title': albumHeader.title ?: '',
+                'header': albumHeader.header ?: '',
+                'description': albumHeader.description ?: '',
+                'images': images
+            } only %}
         {% endif %}
 
-        {% include '/social-networks/home.html.twig' %}
+        {% include '/social-networks/home.html.twig' with {
+            'title': socialHeader.title ?: '',
+            'header': socialHeader.header ?: '',
+            'description': socialHeader.description ?: '',
+            'images': images
+        } only %}
     </div>
 
 {% endblock %}
