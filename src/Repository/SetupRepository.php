@@ -4,6 +4,8 @@ namespace App\Repository;
 
 use App\Entity\Setup;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\NonUniqueResultException;
+use Doctrine\ORM\NoResultException;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
@@ -25,15 +27,7 @@ class SetupRepository extends ServiceEntityRepository
     {
         return $this->createQueryBuilder('s')
             ->leftJoin('s.albumHeader', 'ah')
-            ->addSelect('s.homeHeadline AS headline')
-            ->addSelect('s.homeSubHeadline AS sub_headline')
-            ->addSelect('s.homeCtaButton AS cta_button')
-            ->addSelect('s.homeCtaAction AS cta_action')
-            ->addSelect('s.homeSecondaryButton AS secondary_button')
-            ->addSelect('s.homeSecondaryAction AS secondary_action')
-            ->addSelect('s.homeCtaImage AS cta_image')
-            ->addSelect('s.homeCtaImageAlt AS cta_image_alt')
-            ->addSelect('ah AS album_header')
+            ->select('s, ah')
             ->getQuery()
             ->getOneOrNullResult();
     }
