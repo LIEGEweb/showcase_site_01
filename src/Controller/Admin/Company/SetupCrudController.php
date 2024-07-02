@@ -56,6 +56,12 @@ class SetupCrudController extends AbstractCrudController
                 ->renderAsEmbeddedForm()
                 ->setColumns('w-full');
         }
+        if ($this->activeSections->contactLanding()){
+            yield AssociationField::new('contactLandingHeader', 'Contact d\'accueil')
+                ->addCssClass('font-black pl-12')
+                ->renderAsEmbeddedForm()
+                ->setColumns('w-full');
+        }
     }
 
     public function configureActions(Actions $actions): Actions

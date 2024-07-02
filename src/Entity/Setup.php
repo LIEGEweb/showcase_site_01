@@ -51,6 +51,10 @@ class Setup
 
     #[ORM\OneToOne(cascade: ['persist', 'remove'])]
     private ?SectionHeader $socialHeader = null;
+    #[ORM\OneToOne(cascade: ['persist', 'remove'])]
+    private ?SectionHeader $contactLandingHeader = null;
+    #[ORM\OneToOne(cascade: ['persist', 'remove'])]
+    private ?SectionHeader $contactPageHeader = null;
 
     public function getId(): ?int
     {
@@ -209,6 +213,30 @@ class Setup
     public function setSocialHeader(?SectionHeader $socialHeader): static
     {
         $this->socialHeader = $socialHeader;
+
+        return $this;
+    }
+
+    public function getContactLandingHeader(): ?SectionHeader
+    {
+        return $this->contactLandingHeader;
+    }
+
+    public function setContactLandingHeader(?SectionHeader $contactLandingHeader): static
+    {
+        $this->contactLandingHeader = $contactLandingHeader;
+
+        return $this;
+    }
+
+    public function getContactPageHeader(): ?SectionHeader
+    {
+        return $this->contactPageHeader;
+    }
+
+    public function setContactPageHeader(?SectionHeader $contactPageHeader): static
+    {
+        $this->contactPageHeader = $contactPageHeader;
 
         return $this;
     }

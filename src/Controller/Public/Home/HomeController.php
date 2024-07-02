@@ -50,6 +50,7 @@ class HomeController extends AbstractController
             'setup' => SetupDtoMapper::toDto($setup),
             "albumHeader" => $setup->getAlbumHeader(),
             "socialHeader" => $setup->getSocialHeader(),
+            "contactLandingHeader" => $setup->getContactLandingHeader(),
             'images' => $images,
             'form' => $form
         ]);

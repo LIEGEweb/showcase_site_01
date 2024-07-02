@@ -6,26 +6,39 @@
     {#        {{ dump(setup) }} #}
     <div class="w-full space-y-8">
         {% if setup is not empty %}
-            {% include '/sections/home/hero_stacked.html.twig' with {
-                'headline': setup.homeHeadline ?: '',
-                'sub_headline': setup.homeSubHeadline ?: '',
-                'cta_button': setup.homeCtaButton ?: '',
-                'cta_action': setup.homeCtaAction ?: '',
-                'secondary_button': setup.homeSecondaryButton ?: '',
-                'secondary_action': setup.homeSecondaryAction ?: '',
-                'cta_image': setup.homeCtaImage ?: '',
-                'cta_image_alt': setup.homeCtaImageAlt ?: '',
-            } only %}
+            {% if (app_active_sections.hero is defined and app_active_sections.hero) %}
+                {% include '/sections/home/hero_stacked.html.twig' with {
+                    'headline': setup.homeHeadline | default(null),
+                    'sub_headline': setup.homeSubHeadline | default(null),
+                    'cta_button': setup.homeCtaButton | default(null),
+                    'cta_action': setup.homeCtaAction | default(null),
+                    'secondary_button': setup.homeSecondaryButton | default(null),
+                    'secondary_action': setup.homeSecondaryAction | default(null),
+                    'cta_image': setup.homeCtaImage | default(null),
+                    'cta_image_alt': setup.homeCtaImageAlt | default(null),
+                } only %}
+            {% endif %}
+
+            {% if (app_active_sections.service is defined and app_active_sections.service) %}
+                {% include '/service/services-home.html.twig' with {
+                    'title': setup.serviceTitle | default(null),
+                    'header': setup.serviceHeader | default(null),
+                    'description': setup.serviceDescription | default(null),
+                    'servicesByCategoryGroup': servicesByCategoryGroup | default(null),
+                } only %}
+
+            {% endif %}
         {% endif %}
 
-        {% include '/service/services-home.html.twig' with {
-            'title': setup.serviceTitle ?: '',
-            'header': setup.serviceHeader ?: '',
-            'description': setup.serviceDescription ?: '',
-            'servicesByCategoryGroup': servicesByCategoryGroup ?: '',
-        } only %}
 
-                {% include '/contact/home.html.twig' %}
+        {% if (app_active_sections.contactLanding is defined and app_active_sections.contactLanding) %}
+            {% include '/contact/home.html.twig' with {
+                'title': contactLandingHeader.title | default(null),
+                'header': contactLandingHeader.header | default(null),
+                'description': contactLandingHeader.description | default(null),
+                'form': form
+            } only %}
+        {% endif %}
 
         {% if (app_active_sections.news is defined and app_active_sections.news) %}
             {% include '/sections/news/news-home.html.twig' %}
@@ -35,17 +48,17 @@
             or
             (app_active_sections.photoLanding is defined and app_active_sections.photoLanding) %}
             {% include '/album/albums-home.html.twig' with {
-                'title': albumHeader.title ?: '',
-                'header': albumHeader.header ?: '',
-                'description': albumHeader.description ?: '',
+                'title': albumHeader.title | default(null),
+                'header': albumHeader.header | default(null),
+                'description': albumHeader.description | default(null),
                 'images': images
             } only %}
         {% endif %}
 
         {% include '/social-networks/home.html.twig' with {
-            'title': socialHeader.title ?: '',
-            'header': socialHeader.header ?: '',
-            'description': socialHeader.description ?: '',
+            'title': socialHeader.title | default(null),
+            'header': socialHeader.header | default(null),
+            'description': socialHeader.description | default(null),
             'images': images
         } only %}
     </div>

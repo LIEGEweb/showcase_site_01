@@ -47,4 +47,12 @@ class GlobalActiveSections
     {
         return $this->getFieldStatu('social');
     }
+    public function contactLanding()
+    {
+        return $this->getFieldStatu('contact_landing');
+    }
+    public function contactPage()
+    {
+        return $this->getFieldStatu('contact_page');
+    }
 }

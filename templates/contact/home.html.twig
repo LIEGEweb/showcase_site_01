@@ -4,35 +4,27 @@
 <div class="">
     <section class="w-full  bg-light-neutral-light dark:bg-dark-neutral-light rounded-md">
         <div class="w-4/5 lg:w-1/2 mx-auto p-8 space-y-8">
-            {#            {% if title is defined %} #}
-            <twig:Title:H2 class="font-poppins-semibold !text-light-text-highlight !dark:text-dark-text-highlight">
-                {#                    {{ title }} #}
-                Contact
-            </twig:Title:H2>
-            {#            {% endif %} #}
-            {#            {% if header is defined %}#}
-            <twig:Title:H3>
-                N'hésitez pas à nous envoyer un message
-                {#                    {{ header }}#}
-            </twig:Title:H3>
-            {#            {% endif %}#}
+            {% if title is defined %}
+                <twig:Title:H2 class="font-poppins-semibold !text-light-text-highlight !dark:text-dark-text-highlight">
+                    {{ title }}
+                </twig:Title:H2>
+            {% endif %}
+            {% if header is defined %}
+                <twig:Title:H3>
+                    {{ header }}
+                </twig:Title:H3>
+            {% endif %}
 
         </div>
         <div class="p-8">
             {% include "contact/_form.html.twig" %}
         </div>
         <div class="w-4/5 lg:w-1/2 mx-auto my-8 py-8 space-y-8">
-
-{#        <div class="mx-auto space-y-8">#}
-
-{#            {% if description is defined %}#}
+            {% if description is defined %}
                 <p class="font-poppins-regular text-base leading-relaxes">
-                    Votre avis compte beaucoup pour moi, alors n'hésitez pas à me contacter pour toute question,
-                    suggestion ou demande de collaboration. Je suis toujours ravi de discuter avec vous, alors
-                    envoyez-moi un message, et je vous répondrai dès que possible.
-{#                    {{ description }}#}
+                    {{ description }}
                 </p>
-{#            {% endif %}#}
+            {% endif %}
         </div>
     </section>
 </div>
