@@ -1,0 +1,44 @@
+<div>
+    {{ form_start(form) }}
+
+
+    <div class="w-full flex flex-col mb-8">
+        {{ form_label(form.name, null, { 'label_attr': {'class': 'mb-4'} }) }}
+        {{ form_widget(form.name, { 'attr': {'class': 'w-full rounded-md leading-loose px-2 text-light-text-base focus:outline-none focus-visible:ring focus-visible:ring-dark-primary-light dark:focus-visible:ring-light-primary-dark'} }) }}
+        {{ form_errors(form.name, { 'attr': {'class': 'text-secondary leading-loose'} }) }}
+    </div>
+
+    <div class="flex flex-col md:flex-row mb-0 md:mb-6 md:space-x-8 ">
+        <div class="w-full md:w-1/2 flex flex-col mb-8 md:mb-0">
+            {{ form_label(form.email, null, { 'label_attr': {'class': 'mb-4'} }) }}
+            {{ form_widget(form.email, { 'attr': {'class': 'w-full  px-2 text-light-text-base rounded-md leading-loose focus:outline-none focus-visible:ring focus-visible:ring-dark-primary-light dark:focus-visible:ring-light-primary-dark'} }) }}
+            {{ form_errors(form.email, { 'attr': {'class': 'text-secondary leading-loose'} }) }}
+        </div>
+
+        <div class="w-full md:w-1/2 flex flex-col mb-8">
+            {{ form_label(form.phone, null, { 'label_attr': {'class': 'mb-4'} }) }}
+            {{ form_widget(form.phone, { 'attr': {'class': 'w-full  px-2 text-light-text-base rounded-md leading-loose focus:outline-none focus-visible:ring focus-visible:ring-dark-primary-light dark:focus-visible:ring-light-primary-dark'} }) }}
+            {{ form_errors(form.phone, { 'attr': {'class': 'text-light-text-base dark:text-dark-text-base leading-loose'} }) }}
+        </div>
+    </div>
+
+    <div class="flex flex-col mb-6">
+        {{ form_label(form.message, null, { 'label_attr': {'class': 'mb-4'} }) }}
+        {{ form_widget(form.message, { 'attr': {'rows': '5', 'class': 'w-full h-36  px-2 text-light-text-base rounded-md leading-loose focus:outline-none focus-visible:ring focus-visible:ring-dark-primary-light dark:focus-visible:ring-light-primary-dark'} }) }}
+        {{ form_errors(form.message, { 'attr': {'class': 'text-light-text-base dark:text-dark-text-base leading-loose'} }) }}
+    </div>
+    <div class="flex flex-col space-y-4 md:space-y-0  mx-auto mb-8 mt-12">
+        {{ form_label(form.captcha, 'Merci de recopier les caractères suivants', { 'label_attr': {'class': 'mb-4'} }) }}
+        <div class="flex flex-row space-x-4">
+            {{ form_widget(form.captcha, { 'attr': {'class': 'w-full md:w-28  px-2 text-light-text-base flex rounded-md space-x-4 leading-loose focus:outline-none focus-visible:ring focus-visible:ring-dark-primary-light dark:focus-visible:ring-light-primary-dark px-3'} }) }}
+            {{ form_errors(form.captcha, { 'attr': {'class': 'text-light-text-base dark:text-dark-text-base leading-loose'} }) }}
+        </div>
+    </div>
+
+    <div class="flex flex-col mb-6">
+        {{ form_widget(form.submit, {'label': 'Envoyer', 'attr': {'class': 'w-36 bg-light-primary dark:dark-primary text-dark-text-base font-extrabold  px-6 py-2 rounded-md'} }) }}
+    </div>
+
+    {{ form_end(form) }}
+
+</div>

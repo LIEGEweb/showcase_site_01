@@ -25,7 +25,7 @@
             'servicesByCategoryGroup': servicesByCategoryGroup ?: '',
         } only %}
 
-        {#        {% include '/contact/home.html.twig' %} #}
+                {% include '/contact/home.html.twig' %}
 
         {% if (app_active_sections.news is defined and app_active_sections.news) %}
             {% include '/sections/news/news-home.html.twig' %}
