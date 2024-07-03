@@ -19,15 +19,16 @@
                 } only %}
             {% endif %}
 
-            {% if (app_active_sections.service is defined and app_active_sections.service) %}
+{#            {% if (app_active_sections.service is defined and app_active_sections.service) %}#}
                 {% include '/service/services-home.html.twig' with {
                     'title': setup.serviceTitle | default(null),
                     'header': setup.serviceHeader | default(null),
                     'description': setup.serviceDescription | default(null),
                     'servicesByCategoryGroup': servicesByCategoryGroup | default(null),
+                    'link': app_active_sections.service
                 } only %}
 
-            {% endif %}
+{#            {% endif %}#}
         {% endif %}
 
 
