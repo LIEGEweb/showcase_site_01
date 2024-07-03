@@ -29,8 +29,14 @@
                        <ul class="pl-4">
                            {% for service in category.services %}
                                <li class="relative ">
-                                   <twig:link:Link href="{{ path('app_services', {id: service.id}) }}"
-                                                   class="font-poppins-regular text-base !text-light-text-base dark:!text-dark-text-base hover:font-semibold no-underline hover:underline"> {{ service.name }} </twig:link:Link>
+                                   {% if app_active_sections.service %}
+                                       <twig:link:Link href="{{ path('app_services', {id: service.id}) }}"
+                                                       class="font-poppins-regular text-base !text-light-text-base dark:!text-dark-text-base hover:font-semibold no-underline hover:underline">
+                                           {{ service.name }}
+                                       </twig:link:Link>
+                                   {% else %}
+                                       {{ service.name }}
+                                   {% endif %}
                                </li>
                            {% endfor %}
                        </ul>

@@ -20,7 +20,7 @@
             {% endif %}
 
 {#            {% if (app_active_sections.service is defined and app_active_sections.service) %}#}
-                {% include '/service/services-home.html.twig' with {
+                {% include '/service/home.html.twig' with {
                     'title': setup.serviceTitle | default(null),
                     'header': setup.serviceHeader | default(null),
                     'description': setup.serviceDescription | default(null),
