@@ -1,9 +1,6 @@
-{# {% set title = serviceSection.title ?? null %} #}
-{# {% set header = serviceSection.header ?? null %} #}
-{# {% set description = serviceSection.description ?? null %} #}
 <div class="">
-    <section class="w-full  bg-light-neutral-light dark:bg-dark-neutral-light rounded-md">
-        <div class="w-4/5 lg:w-1/2 mx-auto p-8 space-y-8">
+    <section class="w-full bg-light-neutral-light/40 dark:bg-dark-neutral-light/40 rounded-md">
+        <div class="w-4/5 lg:w-1/2 mx-auto p-8 space-y-8 bg-light-neutral-light dark:bg-dark-neutral-light border-x-8 border-light-primary-light/75">
             {% if title is defined %}
                 <twig:Title:H2 class="font-poppins-semibold !text-light-text-highlight !dark:text-dark-text-highlight">
                     {{ title }}
@@ -15,11 +12,8 @@
                 </twig:Title:H3>
             {% endif %}
 
-        </div>
-        <div class="p-8">
             {% include "contact/_form.html.twig" %}
-        </div>
-        <div class="w-4/5 lg:w-1/2 mx-auto my-8 py-8 space-y-8">
+
             {% if description is defined %}
                 <p class="font-poppins-regular text-base leading-relaxes">
                     {{ description }}
